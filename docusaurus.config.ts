@@ -13,10 +13,10 @@ const config: Config = {
 
   // GitHub Pages deployment config
   url: 'https://cschoch.github.io',
-  baseUrl: '/LS25_WorkflowManager/',
+  baseUrl: '/FS25_WorkflowManagerDocs/',
 
   organizationName: 'CSchoch',
-  projectName: 'LS25_WorkflowManager',
+  projectName: 'FS25_WorkflowManager',
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
@@ -32,7 +32,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/CSchoch/LS25_WorkflowManager/tree/main/website/',
+          editUrl: 'https://github.com/CSchoch/FS25_WorkflowManagerDocs/tree/main/',
           routeBasePath: 'docs',
         },
         blog: false, // Disable blog
@@ -63,7 +63,7 @@ const config: Config = {
           label: 'Documentation',
         },
         {
-          href: 'https://github.com/CSchoch/LS25_WorkflowManager',
+          href: 'https://github.com/CSchoch/FS25_WorkflowManager',
           label: 'GitHub',
           position: 'right',
         },
@@ -111,11 +111,11 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/CSchoch/LS25_WorkflowManager',
+              href: 'https://github.com/CSchoch/FS25_WorkflowManager',
             },
             {
               label: 'Report Issues',
-              href: 'https://github.com/CSchoch/LS25_WorkflowManager/issues',
+              href: 'https://github.com/CSchoch/FS25_WorkflowManager/issues',
             },
           ],
         },
