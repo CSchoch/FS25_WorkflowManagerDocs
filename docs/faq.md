@@ -139,11 +139,20 @@ The game writes errors to `log.txt` in your Farming Simulator 25 root folder. If
 
 ---
 
+### Can I select multiple fill types for a step?
+
+Yes. For AutoDrive **Pickup and Deliver** and **Load** steps, the fill type list supports multi-select:
+- **Click** an entry to select it (single selection)
+- **Ctrl+Click** an entry to add or remove it from the selection
+- Leave empty to accept any fill type
+
+### Is there a queue system for multiple vehicles?
+
+Yes. When you start a workflow and other vehicles are already running workflows, a **Leader Vehicle Select** dialog appears. Pick a leader vehicle and your vehicle (the follower) will wait at each step until the leader has advanced past it — staggering two vehicles safely through the same route. See [Queue System](workflows/queue-system) for details.
+
+---
+
 ## Future Plans
-
-### Will there be a queue system?
-
-Yes, a queue system for multiple vehicles is planned for Phase 2.
 
 ### Will conditions be supported?
 

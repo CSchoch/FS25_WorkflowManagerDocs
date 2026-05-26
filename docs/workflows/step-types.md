@@ -28,11 +28,15 @@ AutoDrive handles all navigation and transport operations.
 - **Unload Target**: Secondary destination (for multi-destination modes)
 - Destinations come from your AutoDrive network markers
 
-### Fill Type Filtering
+### Fill Type Selection
 
-For cargo operations (Pickup and Deliver, Load), you can specify a fill type:
-- Limits what the vehicle will pick up
-- Useful when multiple fill types are available at a location
+For cargo operations (Pickup and Deliver, Load), you can select one or more fill types:
+- **Click** an entry to select it (replaces any previous selection)
+- **Ctrl+Click** an entry to toggle it on or off (add or remove from a multi-type selection)
+- Selected entries are shown with a **✓** prefix in green
+- The label below the list shows the selected types: `Selected: Wheat, Barley` (up to 2 names), or `Selected: 3 selected` for larger selections
+- Limits what the vehicle will pick up — useful when multiple fill types are available at one location
+- Leave empty to accept any fill type
 
 ### Examples
 
@@ -51,7 +55,7 @@ Type:          AutoDrive
 Target:        Farm/Silo
 Action:        Pickup and Deliver
 Unload Target: Sell/Mill
-Fill Type:     Wheat
+Fill Types:    Wheat, Barley   (Ctrl+Click to select multiple)
 ```
 
 **Combine Unloader**

@@ -13,6 +13,7 @@ const sidebars: SidebarsConfig = {
         'workflows/step-types',
         'workflows/executing-workflows',
         'workflows/linked-workflows',
+        'workflows/queue-system',
       ],
     },
     {
