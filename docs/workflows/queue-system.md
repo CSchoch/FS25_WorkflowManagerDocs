@@ -49,6 +49,70 @@ Step 4: Courseplay → Field2_Mow        Field Work
 
 The windrower waits at Step 1 while the mower is still driving to Field 1. Once the mower begins field work (Step 2), the windrower drives to Field 1. The windrower then waits at Step 2 until the mower finishes Field 1 and moves to Step 3. Only then does the windrower start field work on Field 1 — the mower has already cleared the field and is en route to Field 2. The two vehicles stay one step apart at all times.
 
+## Per-Step Sync Control
+
+By default every step participates in synchronization, keeping the follower exactly one step behind the leader at all times. You can adjust this per step using two settings in the **Step Dialog**:
+
+| Setting | Who sets it | Default | Effect |
+|---------|-------------|---------|--------|
+| **Sync Target** | Leader step | Yes | This step is a sync checkpoint — followers must wait until the leader has moved past it |
+| **Sync Source** | Follower step | Yes | This step waits for its matching leader checkpoint before starting |
+
+Both settings default to **Yes**, so existing workflows behave exactly as before with no changes needed.
+
+### How Pairing Works
+
+Pairing is ordinal — the 1st Sync Source step waits for the 1st Sync Target step, the 2nd source for the 2nd target, and so on. Steps marked **No** are skipped when counting ordinals.
+
+```
+Leader steps (Sync Target):  Yes  No   Yes  Yes
+                             ↑1       ↑2   ↑3   ← ordinal targets
+
+Follower steps (Sync Source): Yes  Yes  No   Yes
+                              ↑1   ↑2        ↑3  ← ordinal sources
+
+Pairing:
+  Follower step 1 (1st source) → waits for leader step 1 (1st target)
+  Follower step 2 (2nd source) → waits for leader step 3 (2nd target)
+  Follower step 3 (source=No)  → runs freely, no wait
+  Follower step 4 (3rd source) → waits for leader step 4 (3rd target)
+```
+
+If a source has no matching target (more sources than targets), that follower step also runs freely.
+
+### Example — Skipping Transit from Sync
+
+A mower and windrower share a 4-step workflow:
+
+```
+Step 1: AutoDrive  → Field1_Entrance   Drive To
+Step 2: Courseplay → Field1            Field Work
+Step 3: AutoDrive  → Field2_Entrance   Drive To
+Step 4: Courseplay → Field2            Field Work
+```
+
+Default behavior: windrower starts step N only after mower is on step N+1 — they are always one step apart, including transit.
+
+With transit excluded from sync:
+
+| | Step 1 (transit) | Step 2 (fieldwork) | Step 3 (transit) | Step 4 (fieldwork) |
+|-|---|----|---|---|
+| **Mower** Sync Target | **No** | Yes | **No** | Yes |
+| **Windrower** Sync Source | Yes | Yes | Yes | Yes |
+
+Result:
+- Windrower step 1 (1st source) waits for mower step 2 (1st target) — windrower only starts driving to Field 1 **after the mower has already finished Field 1 and left**
+- Windrower step 2 (2nd source) waits for mower step 4 (2nd target) — windrower only starts windrowing Field 1 after the mower has finished Field 2
+
+This creates a larger gap that can be useful when the follower needs the field completely clear, not just started.
+
+### How to Configure
+
+Open the **Step Dialog** for any step (Add Step or Edit Step). The **Sync Target** and **Sync Source** dropdowns appear at the bottom. Set either to **No** to exclude that step from the sync sequence.
+
+- Set **Sync Target = No** on a leader step to skip it as a checkpoint (followers count past it)
+- Set **Sync Source = No** on a follower step to let it run freely regardless of leader position
+
 ## Leader Stops or Finishes
 
 If the leader vehicle's workflow is **stopped or completes**, the follower is automatically freed and resumes running its own steps without waiting.

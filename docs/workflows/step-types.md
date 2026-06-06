@@ -108,6 +108,17 @@ Target:  Meadow_Baling_Route
 Action:  Bale Collect
 ```
 
+## Sync Settings
+
+Every step (AutoDrive and Courseplay) has two sync settings at the bottom of the Step Dialog. These are only relevant when using the [queue system](queue-system) with a leader vehicle.
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| **Sync Target** | Yes | When set on a **leader** step: this step is a sync checkpoint that follower vehicles wait for |
+| **Sync Source** | Yes | When set on a **follower** step: this step waits for its matching leader checkpoint |
+
+Both default to **Yes** — no changes needed unless you want to exclude specific steps from synchronization. See [Per-Step Sync Control](queue-system#per-step-sync-control) for examples.
+
 ## Step Transitions
 
 ### AutoDrive to Courseplay

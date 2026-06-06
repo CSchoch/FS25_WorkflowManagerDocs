@@ -150,13 +150,17 @@ Yes. For AutoDrive **Pickup and Deliver** and **Load** steps, the fill type list
 
 Yes. When you start a workflow and other vehicles are already running workflows, a **Leader Vehicle Select** dialog appears. Pick a leader vehicle and your vehicle (the follower) will wait at each step until the leader has advanced past it — staggering two vehicles safely through the same route. See [Queue System](workflows/queue-system) for details.
 
+### Can I control which steps trigger the leader wait?
+
+Yes. Each step has **Sync Target** and **Sync Source** settings (Yes/No dropdowns in the Step Dialog). Set **Sync Target = No** on a leader step to exclude it as a checkpoint; set **Sync Source = No** on a follower step to let it run freely without waiting. Both default to **Yes** so existing setups are unaffected. See [Per-Step Sync Control](workflows/queue-system#per-step-sync-control).
+
 ---
 
 ## Future Plans
 
 ### Will conditions be supported?
 
-Advanced workflow conditions (wait for, if/then) are planned for future updates.
+Per-step sync control (Sync Target / Sync Source) is now available, letting you choose which steps participate in leader-follower synchronization. More advanced conditions (if/then, external triggers) are planned for future updates.
 
 ### Will there be visual route planning?
 
