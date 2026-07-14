@@ -49,6 +49,10 @@ Ensure AutoDrive is installed and you have created at least one map marker/desti
 Courses must be saved in Courseplay before they appear. Check:
 - `modSettings/FS25_Courseplay/Courses/[MapName]/`
 
+### What are the Park, Refuel, and Repair step types?
+
+They're AutoDrive utility stops with no target to configure — AutoDrive picks the destination itself each time the step runs (the vehicle's configured park spot, the nearest matching refuel station, or the nearest reachable repair marker). Useful for inserting automatic top-ups into a long-running workflow. See [Step Types](workflows/step-types#autodrive-utility-steps).
+
 ---
 
 ## Execution
@@ -148,11 +152,11 @@ Yes. For AutoDrive **Pickup and Deliver** and **Load** steps, the fill type list
 
 ### Is there a queue system for multiple vehicles?
 
-Yes. When you start a workflow and other vehicles are already running workflows, a **Leader Vehicle Select** dialog appears. Pick a leader vehicle and your vehicle (the follower) will wait at each step until the leader has advanced past it — staggering two vehicles safely through the same route. See [Queue System](workflows/queue-system) for details.
+Yes. When you start a workflow and other vehicles are already running workflows, a **Leader Vehicle Select** dialog appears. Picking a leader alone doesn't make anything wait, though — synchronization is opt-in. Add explicit **Wait for Leader** steps to the follower's workflow, and matching **Unlock Follower** steps to the leader's workflow, to control exactly where the follower pauses. See [Queue System](workflows/queue-system) for details.
 
 ### Can I control which steps trigger the leader wait?
 
-Yes. Each step has **Sync Target** and **Sync Source** settings (Yes/No dropdowns in the Step Dialog). Set **Sync Target = No** on a leader step to exclude it as a checkpoint; set **Sync Source = No** on a follower step to let it run freely without waiting. Both default to **Yes** so existing setups are unaffected. See [Per-Step Sync Control](workflows/queue-system#per-step-sync-control).
+Yes — that's the entire point of the **Wait for Leader** / **Unlock Follower** step types. Add a Wait for Leader step to the follower's workflow at each point it should pause, and a matching Unlock Follower step to the leader's workflow at each point that should release it. Pairing is ordinal (1st waits for 1st, 2nd for 2nd, etc.), and a workflow with no marker steps never waits at all. See [Queue Sync Markers](workflows/step-types#queue-sync-markers).
 
 ---
 
@@ -160,7 +164,7 @@ Yes. Each step has **Sync Target** and **Sync Source** settings (Yes/No dropdown
 
 ### Will conditions be supported?
 
-Per-step sync control (Sync Target / Sync Source) is now available, letting you choose which steps participate in leader-follower synchronization. More advanced conditions (if/then, external triggers) are planned for future updates.
+Basic conditioning is available today via the **Wait for Leader** / **Unlock Follower** marker steps, letting you choose exactly which points in a workflow participate in leader-follower synchronization. More advanced conditions (if/then, external triggers) are planned for future updates.
 
 ### Will there be visual route planning?
 

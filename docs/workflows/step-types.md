@@ -6,7 +6,19 @@ sidebar_position: 2
 
 # Step Types
 
-Workflow Manager supports two types of steps: **AutoDrive** for navigation and **Courseplay** for field work.
+Workflow Manager supports seven step types, selected from the **Type** dropdown in the Step Dialog:
+
+| Type | Category | Needs a target? |
+|------|----------|-----------------|
+| **AutoDrive** | Navigation | Yes |
+| **Courseplay** | Field work | Yes |
+| **Wait for Leader** | [Queue system](queue-system) marker | No |
+| **Unlock Follower** | [Queue system](queue-system) marker | No |
+| **Park** | AutoDrive utility | No |
+| **Refuel** | AutoDrive utility | No |
+| **Repair** | AutoDrive utility | No |
+
+The five types without a target have no Target/Action/Fill Type fields in the Step Dialog — just pick the type and click **OK**.
 
 ## AutoDrive Steps
 
@@ -108,16 +120,30 @@ Target:  Meadow_Baling_Route
 Action:  Bale Collect
 ```
 
-## Sync Settings
+## AutoDrive Utility Steps
 
-Every step (AutoDrive and Courseplay) has two sync settings at the bottom of the Step Dialog. These are only relevant when using the [queue system](queue-system) with a leader vehicle.
+Park, Refuel, and Repair are AutoDrive-driven steps with no configurable target — AutoDrive resolves the destination itself each time the step runs.
 
-| Setting | Default | Description |
-|---------|---------|-------------|
-| **Sync Target** | Yes | When set on a **leader** step: this step is a sync checkpoint that follower vehicles wait for |
-| **Sync Source** | Yes | When set on a **follower** step: this step waits for its matching leader checkpoint |
+| Type | Destination | Behavior when nothing is needed |
+|------|-------------|----------------------------------|
+| **Park** | The vehicle's own AutoDrive park position, or (if attached) its rear implement's park position | No park position configured → step **fails** |
+| **Refuel** | The nearest AutoDrive refuel station matching a fill type the vehicle needs | No refuel needed, or no matching station reachable → step **completes instantly** (not a failure) |
+| **Repair** | The nearest AutoDrive-reachable repair/workshop trigger | No repair station reachable → step **fails** |
 
-Both default to **Yes** — no changes needed unless you want to exclude specific steps from synchronization. See [Per-Step Sync Control](queue-system#per-step-sync-control) for examples.
+:::note
+Refuel's "nothing to do" case is treated as success rather than failure because AutoDrive doesn't distinguish "already fueled" from "no matching station nearby" — either way there's nothing more for the step to do, so the workflow moves on. Park and Repair fail instead, since an unreachable destination there usually means something needs fixing (no park spot configured, no workshop marker placed).
+:::
+
+Add these like any other step — select the type in the Step Dialog and click **OK**. They're most useful inserted between AutoDrive/Courseplay steps in a long-running workflow, so a vehicle tops up fuel or gets patched up automatically instead of stalling out mid-route.
+
+## Queue Sync Markers
+
+**Wait for Leader** and **Unlock Follower** are marker steps used by the [queue system](queue-system) to synchronize two vehicles running the same or different workflows. They run no AD/CP job — they're pure checkpoints:
+
+- **Wait for Leader**: added to a **follower's** workflow. The follower pauses here until the leader has reached its matching **Unlock Follower** step.
+- **Unlock Follower**: added to a **leader's** workflow. Reaching this step releases any followers waiting on the matching **Wait for Leader** checkpoint.
+
+Synchronization is **opt-in** — a workflow with no marker steps never waits on a leader, regardless of whether a leader was selected at start. See [Queue System](queue-system) for the full pairing rules and setup examples.
 
 ## Step Transitions
 
@@ -163,5 +189,15 @@ During Courseplay field work, AutoDrive may be triggered internally (e.g., a har
 - Verify the course exists and is for the correct map
 - Check that required implements are attached
 - Ensure the vehicle supports the course type
+
+### Park / Repair Step Fails Immediately
+- Park needs a park position configured on the vehicle or its rear-attached implement in AutoDrive
+- Repair needs an AutoDrive-reachable repair/workshop marker on the map
+- Both resolve their destination fresh each run — a marker deleted since the workflow was created will cause the step to fail
+
+### Wait for Leader Step Never Unblocks
+- Confirm a leader was selected when the follower's workflow started (check the HUD status line)
+- Confirm the leader's workflow actually has a matching **Unlock Follower** step — without one, the follower waits for the leader to finish its entire workflow
+- See [Queue System](queue-system) for the ordinal pairing rules
 
 See [Troubleshooting](../troubleshooting) for more solutions.

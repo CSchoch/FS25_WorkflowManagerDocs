@@ -45,6 +45,8 @@ Steps are added in the workflow editor.
 |------|---------|
 | **AutoDrive** | Navigation between locations, unloading, loading |
 | **Courseplay** | Field work (harvesting, seeding, cultivating, baling) |
+| **Park / Refuel / Repair** | AutoDrive utility stops with no target to configure — AD resolves the destination itself. See [Step Types](step-types#autodrive-utility-steps) |
+| **Wait for Leader / Unlock Follower** | Sync checkpoints for coordinating two vehicles via the [queue system](queue-system) |
 
 ### Adding an AutoDrive Step
 

@@ -17,7 +17,7 @@ Each main step in a workflow can contain one or more **support sub-steps**. When
 | **Main** | The lead vehicle. Executes the main steps in order. |
 | **Support** | The helper vehicle. Executes the sub-steps of whichever main step the main vehicle is currently on. |
 
-The support vehicle works through its sub-steps in order, then waits until the main vehicle advances to the next step. When the main moves on, the support immediately starts the sub-steps for the new step.
+The support vehicle works through its sub-steps in order, then enters **Waiting for Main** status until the main vehicle advances to the next step. The HUD shows the main vehicle's name during this wait — click it to jump straight into the main vehicle. When the main moves on, the support immediately starts the sub-steps for the new step.
 
 ### Example — Combine + Unloader
 
@@ -93,9 +93,9 @@ The support vehicle executes sub-steps for the current main step one at a time:
 1. Execute sub-step 1
 2. Execute sub-step 2
 3. … (continue through all sub-steps)
-4. Finished all sub-steps → **wait** for main to advance
+4. Finished all sub-steps → status becomes **Waiting for Main**
 
-When the main vehicle moves to the next step, the support immediately starts sub-step 1 of the new step. If the new step has no support sub-steps, the support idles until the main advances again.
+When the main vehicle moves to the next step, the support immediately starts sub-step 1 of the new step. If the new step has no support sub-steps, the support stays in Waiting for Main until the main advances again.
 
 ### Pause / Resume / Stop Propagation
 

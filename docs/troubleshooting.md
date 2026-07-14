@@ -134,6 +134,30 @@ See [Multi-Vehicle Workflows](workflows/linked-workflows) for tips on structurin
 2. Wait for both AD and CP to fully complete
 3. Check for stuck AI or pathfinding issues
 
+### Park or Repair step fails immediately
+
+**Symptoms**: The step errors out as soon as it starts
+
+**Solutions**:
+1. **Park**: configure a park position on the vehicle (or its rear-attached implement) in AutoDrive first
+2. **Repair**: place an AutoDrive-reachable repair/workshop marker on the map
+3. Both resolve their destination fresh every run — a marker deleted since the workflow was created will fail the step again
+
+### Refuel step does nothing
+
+**Symptoms**: Workflow moves straight past a Refuel step without the vehicle driving anywhere
+
+**Cause**: This is expected, not a bug — AutoDrive can't distinguish "the vehicle doesn't need fuel" from "no matching station is reachable," so both cases are treated as an instant success and the workflow continues immediately.
+
+### Follower stuck on "Waiting for leader"
+
+**Symptoms**: A follower vehicle never advances past a **Wait for Leader** step
+
+**Solutions**:
+1. Check the leader's workflow actually contains a matching **Unlock Follower** step — without one, the follower waits for the leader's entire workflow to finish
+2. Verify the leader vehicle is still running (a stopped or finished leader should free the follower automatically within ~1 second)
+3. See [Queue System](workflows/queue-system) for how Wait for Leader / Unlock Follower steps pair up
+
 ---
 
 ## HUD Issues

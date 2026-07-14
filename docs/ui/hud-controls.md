@@ -44,14 +44,17 @@ The HUD can be freely repositioned by dragging:
 
 ## Status Display
 
-### Vehicle Name / Workflow Name
-The header shows **WorkflowManager | VehicleName** (vehicle name truncated to 16 characters). The line below shows the workflow name, including the support badge if support vehicles are active.
+### Header / Workflow Name
+The header shows just **WorkflowManager** — the controlled vehicle is already obvious from being in the seat. The line below shows the workflow name, including the support badge if support vehicles are active.
 
 ### Step Counter
 Shows current step and total steps (e.g., `Step 2/5`). For support vehicles, shows the sub-step counter (e.g., `Step 2.1/2`).
 
 ### Step Target
-Displays the target destination or course name for the current step (e.g., `Field1_Harvest`). No AD/CP type prefix is shown.
+Displays a compact type tag ahead of the target destination or course name, e.g. `[AD] Field1_Harvest`, `[CP] Field1_Wheat_Harvest`, `[PARK]`, `[REFUEL]`, `[REPAIR]`. Marker steps (Wait for Leader, Unlock Follower) show `[WM]`.
+
+### Waiting for Leader / Waiting for Main
+When the vehicle is parked at a **Wait for Leader** step, or is a support vehicle that has finished its sub-steps, the status line reads **Waiting for leader** or **Waiting for main vehicle** followed by that vehicle's name. The name is clickable — click it to jump straight into that vehicle (same as AutoDrive's and Courseplay's own "switch vehicle" links).
 
 ## Control Buttons
 
