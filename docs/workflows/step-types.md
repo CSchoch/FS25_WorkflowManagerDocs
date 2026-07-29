@@ -191,7 +191,7 @@ During Courseplay field work, AutoDrive may be triggered internally (e.g., a har
 - Ensure the vehicle supports the course type
 
 ### Park / Repair Step Fails Immediately
-- Park needs a park position configured on the vehicle or its rear-attached implement in AutoDrive
+- Park needs a park position configured on the vehicle or an attached implement in AutoDrive
 - Repair needs an AutoDrive-reachable repair/workshop marker on the map
 - Both resolve their destination fresh each run — a marker deleted since the workflow was created will cause the step to fail
 

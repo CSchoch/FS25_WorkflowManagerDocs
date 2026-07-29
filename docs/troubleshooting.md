@@ -139,7 +139,7 @@ See [Multi-Vehicle Workflows](workflows/linked-workflows) for tips on structurin
 **Symptoms**: The step errors out as soon as it starts
 
 **Solutions**:
-1. **Park**: configure a park position on the vehicle (or its rear-attached implement) in AutoDrive first
+1. **Park**: configure a park position on the vehicle (or an attached implement) in AutoDrive first
 2. **Repair**: place an AutoDrive-reachable repair/workshop marker on the map
 3. Both resolve their destination fresh every run — a marker deleted since the workflow was created will fail the step again
 
