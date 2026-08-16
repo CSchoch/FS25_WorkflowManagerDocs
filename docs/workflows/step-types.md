@@ -6,7 +6,8 @@ sidebar_position: 2
 
 # Step Types
 
-Workflow Manager supports seven step types, selected from the **Type** dropdown in the Step Dialog:
+Workflow Manager supports seven step types, selected from the **Type** dropdown in the
+[Step Dialog](../ui/step-dialog):
 
 | Type | Category | Needs a target? |
 |------|----------|-----------------|

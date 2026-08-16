@@ -23,6 +23,10 @@ const sidebars: SidebarsConfig = {
       items: [
         'ui/main-dialog',
         'ui/editor-dialog',
+        'ui/step-dialog',
+        'ui/ad-settings-dialog',
+        'ui/mode-dialog',
+        'ui/leader-select-dialog',
         'ui/hud-controls',
       ],
     },

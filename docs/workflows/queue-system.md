@@ -12,7 +12,8 @@ Synchronization is **opt-in**: picking a leader by itself does nothing at runtim
 
 ## How It Works
 
-When you start a workflow on a vehicle that has **other vehicles already running workflows**, a dialog appears:
+When you start a workflow on a vehicle that has **other vehicles already running workflows**, the
+[Leader Vehicle Select Dialog](../ui/leader-select-dialog) appears:
 
 | Choice | Effect |
 |--------|--------|

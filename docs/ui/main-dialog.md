@@ -36,9 +36,12 @@ The main area displays all saved workflows with:
 
 Creates a new workflow:
 1. Click **New**
-2. Enter a workflow name in the dialog
-3. Click **OK**
-4. The Editor Dialog opens for adding steps
+2. The [Editor Dialog](editor-dialog) opens immediately with an empty workflow
+3. Set the name in the editor's **Name** field and add steps
+4. Click **Save** to commit it
+
+The new workflow is only added to the list when you click **Save** — cancelling the editor leaves
+no empty entry behind.
 
 ### Edit Workflow
 
@@ -85,27 +88,23 @@ Opens the AutoDrive settings override dialog for the selected workflow:
 2. Click **AD/CP Settings**
 3. Adjust the values and click **OK**
 
-These settings are applied automatically every time the workflow starts. See [Per-Workflow AD Settings](#per-workflow-ad-settings) below for details.
+These settings are applied automatically every time the workflow starts. See
+[AD/CP Settings Dialog](ad-settings-dialog) for the full field reference.
 
-## Per-Workflow AD Settings
+### Close
 
-Each workflow can store AutoDrive setting overrides that are applied to the vehicle automatically whenever the workflow starts (or auto-resumes after a save/reload).
+Closes the dialog. Workflows are saved when the dialog closes.
 
-Click **AD/CP Settings** in the main dialog to open the settings dialog for the selected workflow.
+## Dialogs Opened on Start
 
-![AD/CP Settings Dialog](/img/screenshots/ad-settings-dialog.png)
+Clicking **Start** can open one or two follow-up dialogs before the workflow actually begins:
 
-| Setting | Unit | Description |
-|---------|------|-------------|
-| **Unload Fill Level** | % (0–100) | Minimum fill level before AutoDrive calls an unloader. Leave empty to keep AutoDrive's current value. |
-| **Pipe Offset** | meters | Horizontal pipe position offset for unloading. Leave empty to keep AutoDrive's current value. |
-| **Pre-Call Level** | % (0–100) | Fill level at which AutoDrive pre-calls the unloader so it arrives just in time. Leave empty to keep AutoDrive's current value. |
+| Dialog | Appears when |
+|--------|--------------|
+| [Mode Select](mode-dialog) | The workflow contains support sub-steps — choose Main or Support |
+| [Leader Vehicle Select](leader-select-dialog) | Other vehicles are already running workflows — choose a leader or none |
 
-:::tip
-Leave a field **empty** to leave that setting unchanged — the workflow will use whatever value is already configured in AutoDrive for that vehicle.
-:::
-
-Settings are stored inside the workflow definition and persist across sessions. They are re-applied each time the workflow starts a new AutoDrive step, so AutoDrive's own route-start logic cannot overwrite them.
+If neither condition applies, the workflow starts immediately with no prompt.
 
 ## Keyboard Shortcuts
 

@@ -24,8 +24,8 @@ The step list shows main steps and their support sub-steps in a single nested li
 | Column | Description |
 |--------|-------------|
 | # | Step number (`1`, `2`, …) or sub-step number (`2.1`, `2.2`, …) |
-| Type | AutoDrive or Courseplay |
-| Target | Destination name or course name |
+| Type | The step type — AutoDrive, Courseplay, a queue marker, or Park / Refuel / Repair |
+| Target | Destination name or course name (empty for targetless types) |
 | Action | The action to perform |
 | Sup | Shows `+N` on main step rows that have N support sub-steps |
 
@@ -85,38 +85,12 @@ Disabled at the top/bottom of the respective list.
 
 ## Step Dialog
 
-When adding or editing a step, the Step Dialog appears:
+Adding or editing a step opens the [Step Dialog](step-dialog), which adapts its fields to the
+selected step type and action.
 
 ![Step Dialog – AutoDrive](/img/screenshots/step-dialog-autodrive.png)
 
 ![Step Dialog – Courseplay](/img/screenshots/step-dialog-courseplay.png)
-
-### Searchable Dropdowns
-
-Target and course dropdowns support search:
-- Click the search icon (🔍) next to the dropdown
-- Type to filter the list
-- Select from filtered results
-
-This is especially useful when you have many AD destinations or CP courses.
-
-### Dynamic Fields
-
-Fields shown depend on step type and action:
-
-**AutoDrive with single destination** (**Drive To**, **Deliver**):
-- Target
-- Action
-
-**AutoDrive with two destinations** (**Pickup and Deliver**, **Load**, **Unload Combine**):
-- Target
-- Action
-- Unload Target
-- Fill Type (optional)
-
-**Courseplay**:
-- Target (course)
-- Action
 
 ## Keyboard Shortcuts
 
@@ -128,14 +102,27 @@ Fields shown depend on step type and action:
 
 ## Workflow Name
 
-The workflow name is shown in the title bar. You can rename it via the main dialog.
+The editor has a **Name** field at the top — edit it directly to name or rename the workflow.
+The name is committed together with the rest of your changes when you click **Save**.
 
 ## Saving
 
-Changes are saved automatically when:
-- Closing the editor dialog
-- Closing the main dialog
-- Saving the game
+The editor works on a **copy** of the workflow, so nothing you do takes effect until you confirm:
+
+| Button | Effect |
+|--------|--------|
+| **Save** | Commits every change — name, steps, and sub-steps — to the workflow, writes it to disk, and returns to the Main Dialog |
+| **Cancel** | Discards the whole editing session. The workflow is left exactly as it was |
+
+For a workflow created with **New**, this is what keeps the list clean: the workflow is only
+registered on **Save**, so cancelling leaves no empty entry behind.
+
+:::warning Save is blocked while the workflow is running
+If the workflow you are editing is currently executing on a vehicle, **Save** refuses and shows
+the blinking warning *"Cannot save: workflow is currently running. Stop it first."* Stop the
+workflow, then save. Your edits stay in the dialog in the meantime — but leaving via **Cancel**
+discards them.
+:::
 
 ## Best Practices
 

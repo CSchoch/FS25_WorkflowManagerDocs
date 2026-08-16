@@ -1,7 +1,7 @@
 ---
 id: hud-controls
 title: HUD Controls
-sidebar_position: 3
+sidebar_position: 7
 ---
 
 # HUD Controls
