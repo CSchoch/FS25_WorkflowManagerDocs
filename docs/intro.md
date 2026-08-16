@@ -16,11 +16,15 @@ Workflow Manager bridges the gap between AutoDrive and Courseplay, allowing you 
 
 - **Workflow Creation**: Create multi-step workflows combining AutoDrive routes and Courseplay courses
 - **Visual Editor**: Simple tabular interface for creating and managing workflows
+- **Web Editor**: Build the same workflows in your browser and export a ready-to-use savegame file
 - **In-Vehicle HUD**: Control workflows directly from your vehicle with pause, resume, and step navigation — draggable to any screen position
 - **Multi-Vehicle Workflows**: Nest support sub-steps inside main steps so a helper vehicle (e.g., unloader) works in sync with the main vehicle (e.g., combine) — all in a single workflow
+- **Queue System**: Hold one vehicle at a checkpoint until another has cleared a field, for convoys and staggered operations
+- **Utility Steps**: Drop Park, Refuel, and Repair steps into a route so long workflows don't stall out
 - **XML Storage**: Workflows are saved per savegame and persist between sessions
 - **Automatic Switching**: Seamlessly transitions between AutoDrive and Courseplay
 - **Save/Resume**: Active workflows are saved with the game and auto-resume after loading
+- **Multiplayer**: Server-authoritative execution, so workflows stay in sync for every player
 
 ## How It Works
 
@@ -51,7 +55,10 @@ Both mods must be installed and properly configured with destinations (AutoDrive
 ## Quick Links
 
 - [Getting Started](getting-started) - Set up your first workflow
+- [Web Editor](web-editor) - Build workflows in your browser, no game needed
 - [Creating Workflows](workflows/creating-workflows) - Detailed workflow creation guide
 - [Step Types](workflows/step-types) - AutoDrive and Courseplay step options
 - [Multi-Vehicle Workflows](workflows/linked-workflows) - Coordinate main + support vehicles with support sub-steps
+- [Queue System](workflows/queue-system) - Stagger vehicles with Wait for Leader / Unlock Follower
+- [Console Commands](api/console-commands) - Inspect a running workflow from the console
 - [Troubleshooting](troubleshooting) - Common issues and solutions

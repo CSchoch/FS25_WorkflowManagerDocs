@@ -93,7 +93,20 @@ Courseplay handles all field work operations.
 
 - Courses must be saved in Courseplay before they appear in the dropdown
 - Courses are stored in: `modSettings/FS25_Courseplay/Courses/[MapId]/`
-- The dropdown shows all available courses for the current map
+- The dropdown shows all available courses for the current map, **including courses inside
+  folders** — the list is built from Courseplay's root folder, not from whichever folder happens
+  to be open in Courseplay's own GUI
+
+Course names are stored as **folder-qualified paths** rather than bare names, e.g.
+`Singleplayer/F34/Kalken` instead of just `Kalken`. This matters when you have the same course
+name in more than one folder: a step asking for `F34/Kalken` must not load `F09/Kalken`.
+
+:::note Courses saved by older versions
+Workflows created before folder-qualified names were introduced stored shorter paths (e.g.
+`F34/Kalken`). These still resolve — the lookup falls back to matching the **end** of the stored
+path against the available courses. You don't need to recreate old workflows, but any step you
+add now will store the full path.
+:::
 
 ### Course Requirements
 

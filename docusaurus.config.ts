@@ -63,6 +63,11 @@ const config: Config = {
           label: 'Documentation',
         },
         {
+          href: 'https://cschoch.github.io/FS25_WorkflowManagerWebeditor/',
+          label: 'Web Editor',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/CSchoch/FS25_WorkflowManager',
           label: 'GitHub',
           position: 'right',
@@ -82,6 +87,10 @@ const config: Config = {
             {
               label: 'Creating Workflows',
               to: '/docs/workflows/creating-workflows',
+            },
+            {
+              label: 'Web Editor',
+              to: '/docs/web-editor',
             },
             {
               label: 'AutoDrive Reference',

@@ -5,6 +5,7 @@ const sidebars: SidebarsConfig = {
     'intro',
     'getting-started',
     'installation',
+    'web-editor',
     {
       type: 'category',
       label: 'Workflows',
@@ -32,6 +33,7 @@ const sidebars: SidebarsConfig = {
         'api/autodrive',
         'api/courseplay',
         'api/xml-format',
+        'api/console-commands',
       ],
     },
     'faq',

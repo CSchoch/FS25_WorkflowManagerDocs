@@ -139,6 +139,21 @@ When the vehicle is parked at a **Wait for Leader** step, or is a support vehicl
 - Move mouse over buttons to see hover effect
 - Click to activate the button
 
+### Mouse Cursor Handling
+
+The HUD turns the mouse cursor on while it's the surface you're interacting with, and hands it
+back to the game when it's done. It only ever switches off a cursor it turned on itself, so a
+cursor that Workflow Manager didn't request — one belonging to AutoDrive, Courseplay, or a game
+menu — is left alone.
+
+This matters when dialogs are involved: opening the Workflow Manager dialogs, the Step Dialog, the
+leader selection dialog, and so on all take the cursor while they're open. Closing the last one
+returns the cursor to whatever state the HUD needs. If a workflow is started from a chain of
+dialogs, the cursor grant waits until that chain finishes closing rather than flickering on and
+off between dialogs.
+
+If the cursor ever gets stuck on, toggling the HUD off and on with **Left Alt + H** resets it.
+
 ### Toggle HUD
 
 Press **Left Alt + H** to show or hide the HUD overlay.

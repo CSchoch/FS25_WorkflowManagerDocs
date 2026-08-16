@@ -125,6 +125,22 @@ See [Multi-Vehicle Workflows](workflows/linked-workflows) for tips on structurin
 3. Ensure the course is for the correct map/field
 4. Test the course manually in Courseplay first
 
+### Wrong Courseplay course runs
+
+**Symptoms**: The vehicle starts field work on the wrong field, using a course with the same name
+as the one you selected
+
+**Cause**: Course names are stored as folder-qualified paths (`Singleplayer/F34/Kalken`). If you
+have the same course name in several folders — one per field, for instance — a workflow saved by
+an older version may have stored only the short name, which can match more than one course.
+
+**Solutions**:
+1. Open the step in the editor and re-select the course from the dropdown — this stores the full
+   folder-qualified path
+2. Check the current name with `wmPrintWorkflow` (see [Console Commands](api/console-commands)) —
+   the Target column shows exactly what the step will look up
+3. See [Course Selection](workflows/step-types#course-selection) for how names are matched
+
 ### Vehicle drives in circles
 
 **Symptoms**: Vehicle repeating behavior instead of advancing
@@ -227,13 +243,30 @@ See [Multi-Vehicle Workflows](workflows/linked-workflows) for tips on structurin
 
 ---
 
+## Diagnosing a Stuck Workflow
+
+When a vehicle isn't doing what you expect, the fastest way to find out why is to ask it directly.
+Open the console with **~** and run:
+
+| Command | Use it when |
+|---------|-------------|
+| `wmPrintState` | A vehicle is stuck and you want its full execution state |
+| `wmPrintStateAll` | A convoy is out of order and you want every vehicle at once |
+| `wmPrintWorkflow` | A follower never unblocks — shows the wait/unlock pairing side by side |
+
+All three are read-only and safe to run on a live save. See
+[Console Commands](api/console-commands) for how to read the output.
+
+---
+
 ## Reporting Bugs
 
 If you encounter issues not covered here:
 
 1. **Collect the game log**: Find `log.txt` in your Farming Simulator 25 root folder (the same folder as the game executable)
-2. **Note reproduction steps**: Write down exactly how to trigger the issue
-3. **Report on GitHub**: [Issues Page](https://github.com/CSchoch/LS25_WorkflowManager/issues)
+2. **Capture the state**: Run `wmPrintStateAll` in the console while the problem is happening and copy the output
+3. **Note reproduction steps**: Write down exactly how to trigger the issue
+4. **Report on GitHub**: [Issues Page](https://github.com/CSchoch/FS25_WorkflowManager/issues)
 
 Include:
 - Mod version
@@ -241,3 +274,4 @@ Include:
 - Game version
 - Steps to reproduce
 - Relevant log excerpts
+- `wmPrintStateAll` output if a workflow was running
