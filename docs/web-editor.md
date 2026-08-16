@@ -8,6 +8,8 @@ sidebar_position: 4
 
 **[Open the Web Editor →](https://cschoch.github.io/FS25_WorkflowManagerWebeditor/)**
 
+![The FS25 Workflow Manager Web Editor](/img/screenshots/web-editor.png)
+
 The Web Editor is a standalone browser app for building Workflow Manager workflows without the
 game running. It produces a game-ready `workflowManager.xml` that you drop into your savegame
 folder — useful for planning long workflows on a second monitor, or editing them comfortably with
