@@ -97,6 +97,7 @@ Main steps are direct children of `<workflow>`. Steps that have support sub-step
 | `action` | string | Yes | Action to perform |
 | `unloadTarget` | string | No | Secondary destination (AutoDrive only) |
 | `fillType` | string | No | Cargo filter (AutoDrive only) |
+| `seedFruitType` | string | No | Seed to select on the sowing machine, e.g. `WHEAT` (Courseplay field work only) |
 
 #### Support Sub-Step Attributes
 

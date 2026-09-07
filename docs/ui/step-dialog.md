@@ -53,12 +53,14 @@ The available actions depend on the type:
 
 The action drives which of the remaining fields appear:
 
-| Action | Second target | Fill Type |
-|--------|---------------|-----------|
-| Drive To, Deliver | — | — |
-| Unload | Deliver To | — |
-| Pickup & Deliver | Deliver To | Yes |
-| Load | **Load Point** | Yes |
+| Action | Second target | Fill Type | Seed Type |
+|--------|---------------|-----------|-----------|
+| Drive To, Deliver | — | — | — |
+| Unload | Deliver To | — | — |
+| Pickup & Deliver | Deliver To | Yes | — |
+| Load | **Load Point** | Yes | — |
+| Field Work | — | — | Yes |
+| Bale Collect | — | — | — |
 
 :::tip
 The second target's label changes with the action — it reads **Load Point** for the *Load* action
@@ -93,6 +95,19 @@ matters when several fill types are available at one location.
   selections (`Selected: 3 selected`)
 - Leave it empty to accept **any** fill type
 
+## Seed Type
+
+Shown only for the Courseplay **Field Work** action. It selects the seed on the attached sowing
+machine just before Courseplay starts, so a workflow can sow a different crop on each field.
+
+- **None** (the default) leaves whatever seed the machine already has
+- The seed is applied to every attached sowing machine that can sow it
+- Setting it on a step is harmless when no sowing machine is attached — it is simply ignored
+- The list holds every plantable fruit type on the current map, so it also covers crops added
+  by mods
+
+See [Seed Type](../workflows/step-types#seed-type) for what happens at runtime.
+
 ## Confirming
 
 | Button | Effect |
@@ -107,8 +122,8 @@ Validation is deliberately minimal:
   appears unresponsive, check that a target is selected.
 - For the five targetless types, only the type is stored. Pick the type and click **OK**.
 
-Second target and fill type are only saved when the chosen action actually uses them, so
-switching action after setting them discards the values that no longer apply.
+Second target, fill type and seed type are only saved when the chosen action actually uses
+them, so switching action after setting them discards the values that no longer apply.
 
 :::info
 **OK** returns the step to the editor's edit buffer — it does not write to disk. The workflow is

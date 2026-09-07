@@ -109,6 +109,22 @@ path against the available courses. You don't need to recreate old workflows, bu
 add now will store the full path.
 :::
 
+### Seed Type
+
+Field work steps can select the seed the sowing machine should use, so one workflow can sow
+different crops on different fields without you switching seed by hand between them.
+
+- Choose a crop from the **Seed Type** dropdown, or leave it on **None** to keep whatever seed
+  the machine currently has
+- The seed is selected on every attached sowing machine that can sow it, right before
+  Courseplay starts the field work
+- If no sowing machine is attached, the setting is simply ignored — you can set it on a step
+  and still run the workflow with a different vehicle
+- If a sowing machine **is** attached but none of them can sow the chosen crop, the step fails
+  and the workflow stops, so you never sow the wrong crop by accident
+- When a contract has locked the seed to its own crop, that lock wins and the workflow
+  continues with the contract's seed
+
 ### Course Requirements
 
 Before starting a workflow, ensure:
@@ -203,6 +219,8 @@ During Courseplay field work, AutoDrive may be triggered internally (e.g., a har
 - Verify the course exists and is for the correct map
 - Check that required implements are attached
 - Ensure the vehicle supports the course type
+- If the step sets a **Seed Type**, check that the attached sowing machine can actually sow
+  that crop — the workflow stops with an error if it cannot
 
 ### Park / Repair Step Fails Immediately
 - Park needs a park position configured on the vehicle or an attached implement in AutoDrive
