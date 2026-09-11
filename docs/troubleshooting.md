@@ -16,13 +16,16 @@ Common issues and solutions for Workflow Manager.
 
 **Solutions**:
 1. Verify the mod is enabled in the mod selection screen
-2. Check that both AutoDrive and Courseplay are also enabled
+2. Check that Courseplay (and AutoDrive, if you use it) is also enabled
 3. Look at the game log (`log.txt`) for error messages
 4. Ensure the ZIP file is not corrupted
 
-### "AutoDrive not found" error
+### AutoDrive step types missing
 
-**Symptoms**: Error message when opening Workflow Manager
+**Symptoms**: The Step Dialog offers no **AutoDrive**, **Park**, **Refuel**, or **Repair** type
+
+**Cause**: AutoDrive is not installed or not enabled. AutoDrive is optional, so Workflow Manager
+hides the step types that need it. Steps that already have one of those types keep it.
 
 **Solutions**:
 1. Install AutoDrive from GitHub or ModHub
@@ -79,7 +82,9 @@ Common issues and solutions for Workflow Manager.
 
 **Solutions**:
 1. Enter a compatible vehicle first
-2. Check the vehicle supports both AD and CP
+2. Check the vehicle supports Courseplay — and AutoDrive, if the workflow contains AutoDrive, Park,
+   Refuel, or Repair steps. The warning *Vehicle '…' needs Courseplay* or *…needs AutoDrive +
+   Courseplay* tells you which one is missing
 3. Ensure no other AD/CP job is running
 4. Verify the workflow has at least one step
 
@@ -218,6 +223,21 @@ an older version may have stored only the short name, which can match more than 
 1. Ensure you saved the game after creating workflows
 2. Check `workflowManager.xml` exists in savegame folder
 3. File might be corrupted - check for backup
+
+### Courseplay doesn't continue after loading
+
+**Symptoms**: A workflow that was doing Courseplay field work when you saved stays paused after
+loading
+
+**Solutions**:
+1. Wait about 10 seconds — the restart only happens once the post-load check window ends
+2. Check that **ESC → Settings → General → Resume Courseplay after loading** is on. When it is
+   off, press **Resume** on the HUD — the field work still restarts at the saved waypoint
+3. If **Resume** does nothing either, no waypoint was recorded when the game was saved. The
+   workflow deliberately stays paused rather than re-driving the whole field — use the HUD
+   **Next** / **Previous** buttons to move on
+
+See [Resume After Save](workflows/executing-workflows#resume-after-save).
 
 ### XML load errors
 

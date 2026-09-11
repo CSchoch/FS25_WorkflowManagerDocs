@@ -96,6 +96,9 @@ selected step type and action.
 
 | Key | Action |
 |-----|--------|
+| **N** | Add step |
+| **T** | Edit selected step |
+| **S** | Add support step to the selected main step |
 | **R** | Delete selected step |
 | **U** | Move step up |
 | **D** | Move step down |

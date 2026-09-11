@@ -22,7 +22,7 @@ the vehicle starts as the main vehicle.
 | Button | Effect |
 |--------|--------|
 | **Main** | The vehicle runs the workflow's main steps — the combine, harvester, or whichever vehicle does the primary job |
-| **Support** | The vehicle runs the support sub-steps nested under each main step, following the main vehicle's progress |
+| **Support** / **F** | The vehicle runs the support sub-steps nested under each main step, following the main vehicle's progress |
 | **Cancel** / **Esc** | Nothing starts |
 
 Start the **main vehicle first**, then the support vehicle — a support vehicle needs a main

@@ -30,8 +30,27 @@ The file is created automatically when you save your first workflow.
     <workflows>
         <!-- Workflow elements here -->
     </workflows>
+    <settings>
+        <!-- Settings elements here -->
+    </settings>
 </WorkflowManager>
 ```
+
+### Settings Element
+
+Written by the game on every save. You normally leave it alone — the values change through the game itself.
+
+```xml
+<settings>
+    <hud posX="..." posY="..."/>
+    <general courseplayAutoResume="true"/>
+</settings>
+```
+
+| Element | Attribute | Type | Description |
+|---------|-----------|------|-------------|
+| `hud` | `posX`, `posY` | float | HUD position on screen, as last dragged |
+| `general` | `courseplayAutoResume` | bool | The **Resume Courseplay after loading** option (default `true`) — see [Resume After Save](../workflows/executing-workflows#resume-after-save) |
 
 ### Workflow Element
 

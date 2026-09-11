@@ -13,7 +13,7 @@ This guide covers how to run, monitor, and control workflows during execution.
 ### Requirements
 
 Before starting a workflow:
-1. Enter a **compatible vehicle** (must have both AutoDrive and Courseplay support)
+1. Enter a **compatible vehicle** (must support Courseplay — and AutoDrive, if the workflow contains AutoDrive, Park, Refuel, or Repair steps)
 2. Ensure required **implements are attached**
 3. The vehicle should not have another AD or CP job running
 
@@ -177,9 +177,31 @@ In multiplayer:
 
 ## Resume After Save
 
-If you save the game while a workflow is running, the vehicle's state is preserved automatically. When you reload, the workflow is restored as paused — use the **HUD Resume button** (`>`) to continue from where it left off. The role (Main or Support) and the current sub-step are also saved and restored.
+If you save the game while a workflow is running, the vehicle's state is preserved automatically — the current step, the role (Main or Support), and the current sub-step. Clicking **Start** in the main dialog always starts the workflow fresh from step 1.
 
-Clicking **Start** in the main dialog always starts the workflow fresh from step 1.
+When you reload, the workflow is restored as **paused**, and for the first **10 seconds** Workflow Manager watches the vehicle:
+
+| Situation | What happens after loading |
+|-----------|----------------------------|
+| AutoDrive or Courseplay starts driving again on its own within the 10 seconds | The workflow resumes automatically |
+| The vehicle was doing **Courseplay field work** when the game was saved | After the 10 seconds, Workflow Manager restarts Courseplay **at the waypoint where the game was saved** |
+| Anything else | The workflow stays paused — press the **HUD Resume button** (`>`) to continue |
+
+Vehicles that were waiting for a leader or for their main vehicle are restored in that waiting state instead, and continue as soon as the condition is met.
+
+### Resume Courseplay after loading
+
+Courseplay never restarts on its own after a savegame load, and a plain restart would begin the field again at waypoint 1. Workflow Manager therefore records the waypoint when the game is saved and restarts from there. The automatic restart can be switched off under **ESC → Settings → General**, in the **Workflow Manager** section:
+
+| Setting | Default | Effect |
+|---------|---------|--------|
+| **Resume Courseplay after loading** | On | Off = the workflow stays paused after loading; pressing **Resume** still restarts the field work at the saved waypoint |
+
+The setting is stored per savegame. In multiplayer the host's value applies, and the option is read-only for other players.
+
+:::note
+If no waypoint could be recorded when the game was saved, the workflow stays paused — neither the automatic restart nor **Resume** will re-drive the whole field from the start. Use the HUD **Next** / **Previous** buttons to move on.
+:::
 
 ## Performance
 

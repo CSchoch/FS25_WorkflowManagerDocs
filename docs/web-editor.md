@@ -42,6 +42,12 @@ Sync markers are deliberately not offered inside support sub-steps — exactly a
 leader/follower pairing is built from main steps only. See [Queue System](workflows/queue-system).
 :::
 
+:::info
+The editor always offers all seven types — a browser can't tell whether AutoDrive is installed.
+In-game, AutoDrive is optional: a workflow with **AutoDrive**, **Park**, **Refuel**, or **Repair**
+steps needs it to start, while a Courseplay-only workflow runs without it.
+:::
+
 ## Round-tripping your savegame
 
 1. **Import** your existing `workflowManager.xml` — use the file picker or just drop the file
@@ -52,7 +58,8 @@ leader/follower pairing is built from main steps only. See [Queue System](workfl
 
 Older save formats — linked-workflow pairs and per-step sync flags — are migrated on import using
 the same rules as `WorkflowStorage.lua` in-game, so an old file imports cleanly and exports as
-current `formatVersion 2`. The HUD position stored in an imported file is preserved on export.
+current `formatVersion 2`. The HUD position and the mod settings stored in an imported file (such
+as **Resume Courseplay after loading**) are preserved on export.
 
 :::warning
 Export replaces the whole file. Close the game before overwriting `workflowManager.xml`, or the

@@ -17,7 +17,7 @@ Choosing a targetless type collapses it to a single dropdown.
 
 ## Type
 
-The **Type** dropdown selects what the step does. Seven types are available:
+The **Type** dropdown selects what the step does. Up to seven types are available:
 
 | Type | Shows target/action fields? |
 |------|------------------------------|
@@ -40,6 +40,13 @@ from main steps only.
 The one exception: if you're editing a sub-step that is *already* a marker (saved before this
 restriction existed), both types stay listed so the dropdown reflects reality and lets you
 convert the step to something else.
+:::
+
+:::note Without AutoDrive
+AutoDrive is optional. When it isn't installed, the four AutoDrive-driven types — *AutoDrive*,
+*Park*, *Refuel*, and *Repair* — are removed from the Type dropdown, and a new step starts as
+**Courseplay** / **Field Work**. A step that already has one of those types keeps it listed, so
+you can see what it is and convert it.
 :::
 
 ## Action

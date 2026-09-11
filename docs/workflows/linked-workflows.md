@@ -115,7 +115,7 @@ If the support vehicle starts after the main is already running, it joins at sub
 
 ### Save and Load
 
-When you save the game, both the **role** (Main or Support) and the current **sub-step index** are saved with the vehicle. On reload, the vehicle resumes as paused and auto-resumes within 10 seconds, continuing from where it left off.
+When you save the game, both the **role** (Main or Support) and the current **sub-step index** are saved with the vehicle. On reload, the vehicle is restored as paused and continues from where it left off — see [Resume After Save](executing-workflows#resume-after-save) for when that happens automatically and when you press **Resume**.
 
 ## HUD Display
 

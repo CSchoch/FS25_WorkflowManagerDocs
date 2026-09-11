@@ -12,9 +12,9 @@ This guide will help you create your first automated workflow in Farming Simulat
 
 Before using Workflow Manager, ensure you have:
 
-1. **AutoDrive** installed and configured with at least one destination
-2. **Courseplay** installed with at least one saved course
-3. A vehicle that supports both AutoDrive and Courseplay
+1. **Courseplay** installed with at least one saved course
+2. **AutoDrive** installed and configured with at least one destination — *optional*, only needed for AutoDrive, Park, Refuel, and Repair steps
+3. A vehicle that supports Courseplay (and AutoDrive, if your workflow uses AutoDrive steps)
 
 ## Keyboard Shortcuts
 
@@ -43,7 +43,7 @@ The main dialog shows your list of workflows (empty at first).
 
 1. Click **+** (Add Step) to create a new step
 2. Select the step type:
-   - **AutoDrive** - For navigation between locations
+   - **AutoDrive** - For navigation between locations (only offered when AutoDrive is installed)
    - **Courseplay** - For field work
 3. Configure the step:
    - For AutoDrive: Select a target destination and action (Drive To, Pickup and Deliver, etc.)
@@ -59,7 +59,7 @@ Close the editor when you're done adding steps. Your workflow is saved automatic
 
 ### Start the Workflow
 
-1. **Get into a vehicle** that has both AutoDrive and Courseplay support
+1. **Get into a vehicle** that supports Courseplay — and AutoDrive, if the workflow has AutoDrive steps
 2. Press **Left Alt + W** to open the Workflow Manager
 3. Select your workflow from the list
 4. Click **Start** (or press **S**)
@@ -77,7 +77,7 @@ The **in-vehicle HUD** shows the current workflow status. Use the HUD buttons to
 
 ### Resume After Save
 
-If you save the game while a workflow is running, the vehicle's state is preserved automatically. When you reload, the workflow is restored as paused — use the **HUD Resume button** to continue from where you left off.
+If you save the game while a workflow is running, the vehicle's state is preserved automatically. When you reload, the workflow is restored as paused and continues on its own where possible — Courseplay field work restarts at the waypoint where it was saved, about 10 seconds after loading. If it stays paused, use the **HUD Resume button** to continue. See [Resume After Save](./workflows/executing-workflows#resume-after-save) for the details.
 
 Clicking **Start** in the main dialog always starts fresh from step 1.
 

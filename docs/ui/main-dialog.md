@@ -69,7 +69,7 @@ Begins execution of the selected workflow:
 3. Click **Start**
 
 Requirements:
-- Vehicle must support both AutoDrive and Courseplay
+- Vehicle must support Courseplay — and AutoDrive, if the workflow contains AutoDrive, Park, Refuel, or Repair steps
 - Workflow must have at least one step
 - No other AD/CP job can be running
 
@@ -119,18 +119,20 @@ If neither condition applies, the workflow starts immediately with no prompt.
 | Key | Action |
 |-----|--------|
 | **N** | New workflow |
+| **T** | Edit selected workflow |
+| **R** | Delete selected workflow |
 | **S** | Start selected workflow |
-| **X** | Stop selected workflow |
-| **P** | Pause / Resume workflow |
-| **Delete** | Delete selected workflow |
-| **Enter** | Edit selected workflow |
+| **K** | Stop selected workflow |
+| **B** | AD/CP Settings for the selected workflow |
 | **↑ / ↓** | Navigate the workflow list |
-| **1–9** | Quick-select workflow by position |
 | Double-click | Edit workflow |
+
+Pause and resume are on the [HUD](hud-controls). All keys can be rebound under **Controls** in the
+game settings — a binding saved there takes precedence over these defaults.
 
 ## Resume After Save
 
-If you save the game while a workflow is running, the vehicle's state is preserved automatically. When you reload, the workflow is restored as paused on the vehicle — use the **HUD** to resume from where it left off.
+If you save the game while a workflow is running, the vehicle's state is preserved automatically. When you reload, the workflow is restored as paused on the vehicle and continues on its own where possible — see [Resume After Save](../workflows/executing-workflows#resume-after-save). Anything still paused is resumed from the **HUD**.
 
 Clicking **Start** in the main dialog always starts the workflow fresh from step 1.
 

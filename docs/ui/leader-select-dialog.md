@@ -34,7 +34,7 @@ confirms in one action.
 | Button | Effect |
 |--------|--------|
 | **Select** | Links this vehicle to the highlighted leader, then starts the workflow |
-| **No Leader** | Starts immediately with no leader link |
+| **No Leader** / **F** | Starts immediately with no leader link |
 | **Cancel** / **Esc** | The workflow does not start |
 
 **Select** is disabled when nothing is highlighted.

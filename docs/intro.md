@@ -23,7 +23,7 @@ Workflow Manager bridges the gap between AutoDrive and Courseplay, allowing you 
 - **Utility Steps**: Drop Park, Refuel, and Repair steps into a route so long workflows don't stall out
 - **XML Storage**: Workflows are saved per savegame and persist between sessions
 - **Automatic Switching**: Seamlessly transitions between AutoDrive and Courseplay
-- **Save/Resume**: Active workflows are saved with the game and auto-resume after loading
+- **Save/Resume**: Active workflows are saved with the game and resume after loading — Courseplay field work continues from the waypoint where it was saved
 - **Multiplayer**: Server-authoritative execution, so workflows stay in sync for every player
 
 ## How It Works
@@ -47,10 +47,10 @@ Workflow Manager bridges the gap between AutoDrive and Courseplay, allowing you 
 ## Requirements
 
 - **Farming Simulator 25**
-- **AutoDrive** (FS25 version)
-- **Courseplay** (FS25 version)
+- **Courseplay** (FS25 version) — required
+- **AutoDrive** (FS25 version) — optional, only needed for workflows with AutoDrive, Park, Refuel, or Repair steps
 
-Both mods must be installed and properly configured with destinations (AutoDrive) and courses (Courseplay) before creating workflows.
+Set up your courses in Courseplay (and destinations in AutoDrive, if you use it) before creating workflows. A workflow made only of Courseplay steps runs without AutoDrive installed.
 
 ## Quick Links
 

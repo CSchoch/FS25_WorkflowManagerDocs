@@ -14,7 +14,7 @@ Workflow Manager is a mod that connects AutoDrive and Courseplay, allowing you t
 
 ### Do I need both AutoDrive and Courseplay?
 
-Yes, both mods are required. Workflow Manager acts as a bridge between them.
+Courseplay is required. AutoDrive is optional — it's only needed for workflows that contain **AutoDrive**, **Park**, **Refuel**, or **Repair** steps. Without it, those step types are hidden in the Step Dialog, and workflows made only of Courseplay steps run normally.
 
 ### Does it work in multiplayer?
 
@@ -68,16 +68,18 @@ Press **Left Alt + W** from anywhere (on foot or in a vehicle).
 | **Left Alt + W** | Open/close the Workflow Manager |
 | **Left Alt + H** | Toggle the HUD overlay |
 
+Inside the dialogs, single-key shortcuts are available too — see [Main Dialog](ui/main-dialog#keyboard-shortcuts) and [Editor Dialog](ui/editor-dialog#keyboard-shortcuts).
+
 ### Why won't my workflow start?
 
 Check:
-1. You're in a compatible vehicle (has both AD and CP support)
+1. You're in a compatible vehicle (supports Courseplay, plus AutoDrive if the workflow has AutoDrive, Park, Refuel, or Repair steps)
 2. The workflow has at least one step
 3. No other AD or CP job is running
 
 ### Can I use any vehicle?
 
-The vehicle must have both AutoDrive and Courseplay specializations. Most tractors, harvesters, and trucks support both.
+The vehicle must have the Courseplay specialization, plus the AutoDrive specialization if the workflow contains AutoDrive, Park, Refuel, or Repair steps. Most tractors, harvesters, and trucks support both.
 
 ### What happens if I exit the vehicle during a workflow?
 
@@ -89,7 +91,7 @@ One workflow per vehicle. Multiple vehicles can each run their own workflow. To 
 
 ### What happens after I reload a savegame?
 
-Workflows that were running are set to paused. Open the Workflow Manager and resume them to continue from the saved step.
+Workflows that were running are restored as paused and continue on their own where possible — Courseplay field work restarts at the waypoint where it was saved, about 10 seconds after loading. Anything still paused after that is continued with the HUD **Resume** button. See [Resume After Save](workflows/executing-workflows#resume-after-save).
 
 ### What if a step fails?
 

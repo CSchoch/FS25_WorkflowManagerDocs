@@ -21,6 +21,8 @@ Workflow Manager supports seven step types, selected from the **Type** dropdown 
 
 The five types without a target have no Target/Action/Fill Type fields in the Step Dialog — just pick the type and click **OK**.
 
+**AutoDrive**, **Park**, **Refuel**, and **Repair** need AutoDrive installed; without it they are hidden in the Step Dialog. **Courseplay** steps and the queue markers work with Courseplay alone.
+
 ## AutoDrive Steps
 
 AutoDrive handles all navigation and transport operations.
@@ -211,6 +213,7 @@ During Courseplay field work, AutoDrive may be triggered internally (e.g., a har
 ## Troubleshooting Steps
 
 ### AutoDrive Step Won't Start
+- Check that AutoDrive is installed and enabled — a workflow containing AutoDrive steps won't start without it
 - Check that the destination exists in AutoDrive
 - Verify the vehicle has the AutoDrive spec
 - Ensure no other AD/CP job is running
