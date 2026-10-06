@@ -50,21 +50,42 @@ steps needs it to start, while a Courseplay-only workflow runs without it.
 
 ## Round-tripping your savegame
 
+### Edit the savegame directly (Chrome, Edge)
+
+1. Click **Open savegame** and pick your savegame folder
+   (`.../My Games/FarmingSimulator2025/savegameN/`). Its `workflowManager.xml` is loaded and the
+   browser asks once to allow editing files in that folder.
+2. Build or edit your workflows.
+3. Click **Save to savegameN** — the file is written straight into the folder. The game can keep
+   running: it reads the file again every time you open the Workflow Manager window.
+
+The folder stays linked across page reloads; after a reload the browser asks for permission again
+on the first save. If the game changed the file since the editor loaded it (an in-game edit or a
+game save), Save asks before overwriting — click **Open savegame** again to load the newer file
+instead.
+
+### Import / Export (any browser)
+
+Firefox and Safari don't let web pages write into folders, so there the **Open savegame** button
+is hidden:
+
 1. **Import** your existing `workflowManager.xml` — use the file picker or just drop the file
    anywhere on the page.
 2. Build or edit your workflows.
 3. **Export XML**, then replace `workflowManager.xml` in your savegame folder
-   (`.../My Games/FarmingSimulator2025/savegameN/`) **while the game is closed**.
+   (`.../My Games/FarmingSimulator2025/savegameN/`). The game can keep running: it reads the file
+   again every time you open the Workflow Manager window.
 
 Older save formats — linked-workflow pairs and per-step sync flags — are migrated on import using
 the same rules as `WorkflowStorage.lua` in-game, so an old file imports cleanly and exports as
-current `formatVersion 2`. The HUD position and the mod settings stored in an imported file (such
-as **Resume Courseplay after loading**) are preserved on export.
+current `formatVersion 2`. The exported file holds workflows only: the mod's settings and the HUD
+position are stored per player by the game (see [XML Format](api/xml-format#settings-separate-file)).
 
 :::warning
-Export replaces the whole file. Close the game before overwriting `workflowManager.xml`, or the
-game will write its in-memory copy back over your changes on the next save. Keep a backup of the
-original file until you've confirmed the workflows load correctly.
+Export replaces the whole file. Workflows you removed in the editor are **stopped** in-game the
+next time the file is read, and a workflow that is running continues with its new steps, matched
+by step number. Keep a backup of the original file until you've confirmed the workflows load
+correctly.
 :::
 
 ## Target suggestions

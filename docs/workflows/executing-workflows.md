@@ -191,13 +191,23 @@ Vehicles that were waiting for a leader or for their main vehicle are restored i
 
 ### Resume Courseplay after loading
 
-Courseplay never restarts on its own after a savegame load, and a plain restart would begin the field again at waypoint 1. Workflow Manager therefore records the waypoint when the game is saved and restarts from there. The automatic restart can be switched off under **ESC → Settings → General**, in the **Workflow Manager** section:
+Courseplay never restarts on its own after a savegame load, and a plain restart would begin the field again at waypoint 1. Workflow Manager therefore records the waypoint when the game is saved and restarts from there. The automatic restart can be switched off in the settings below.
+
+## Settings
+
+The **Workflow Manager** section under **ESC → Settings → General**:
 
 | Setting | Default | Effect |
 |---------|---------|--------|
 | **Resume Courseplay after loading** | On | Off = the workflow stays paused after loading; pressing **Resume** still restarts the field work at the saved waypoint |
+| **Show keys in the help window** | On | Off = the Workflow Manager keys are not listed in the F1 help window. The keys keep working |
+| **Debug logging** | Off | Writes detailed messages to `log.txt` — switch it on before reproducing a problem for a bug report |
 
-The setting is stored per savegame. In multiplayer the host's value applies, and the option is read-only for other players.
+The settings are stored on your computer (`modSettings/FS25_WorkflowManager.xml`) and apply to every savegame. In multiplayer, **Resume Courseplay after loading** is decided by the host, so it is read-only for other players; the other two are each player's own choice.
+
+## Error Messages
+
+When a step cannot run because of its configuration — an AutoDrive destination or Courseplay course that does not exist, no park position, no workshop in reach, a seed the attached seeder cannot sow — the workflow stops and every player of the vehicle's farm gets a message naming the vehicle and the problem. Warnings that do not stop the workflow (an unknown unload destination, several courses with the same name) are reported the same way. While a Workflow Manager window is open, messages appear in its status line at the bottom instead of the game's notifications.
 
 :::note
 If no waypoint could be recorded when the game was saved, the workflow stays paused — neither the automatic restart nor **Resume** will re-drive the whole field from the start. Use the HUD **Next** / **Previous** buttons to move on.

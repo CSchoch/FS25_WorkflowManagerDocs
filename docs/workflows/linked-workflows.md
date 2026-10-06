@@ -97,6 +97,8 @@ The support vehicle executes sub-steps for the current main step one at a time:
 
 When the main vehicle moves to the next step, the support immediately starts sub-step 1 of the new step. If the new step has no support sub-steps, the support stays in Waiting for Main until the main advances again.
 
+A sub-step can be set to **Finish before switching** in the [Step Dialog](../ui/step-dialog#finish-before-switching). Then the support vehicle completes that sub-step first and only afterwards starts sub-step 1 of the step the main vehicle is on at that moment. Main steps passed in the meantime are skipped. Manual **Next** / **Previous** on the main vehicle still switches the support vehicle at once. The pending switch is saved with the savegame.
+
 ### Pause / Resume / Stop Propagation
 
 Support vehicles run **independently** — pausing or stopping the main vehicle does not affect them.

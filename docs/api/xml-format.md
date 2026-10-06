@@ -30,27 +30,48 @@ The file is created automatically when you save your first workflow.
     <workflows>
         <!-- Workflow elements here -->
     </workflows>
-    <settings>
-        <!-- Settings elements here -->
-    </settings>
 </WorkflowManager>
 ```
 
-### Settings Element
+### Settings (separate file)
 
-Written by the game on every save. You normally leave it alone — the values change through the game itself.
+The mod's options and the HUD position are **not** part of `workflowManager.xml`. They are stored
+per player / computer, for every savegame, in:
+
+```
+Documents/My Games/FarmingSimulator2025/modSettings/FS25_WorkflowManager.xml
+```
 
 ```xml
-<settings>
+<WorkflowManagerSettings>
+    <general courseplayAutoResume="true" showHelpKeys="true" debugMode="false"/>
     <hud posX="..." posY="..."/>
-    <general courseplayAutoResume="true"/>
-</settings>
+</WorkflowManagerSettings>
 ```
 
 | Element | Attribute | Type | Description |
 |---------|-----------|------|-------------|
+| `general` | `courseplayAutoResume` | bool | **Resume Courseplay after loading** (default `true`) — see [Resume After Save](../workflows/executing-workflows#resume-after-save) |
+| `general` | `showHelpKeys` | bool | **Show keys in the help window** (default `true`) |
+| `general` | `debugMode` | bool | **Debug logging** (default `false`) |
 | `hud` | `posX`, `posY` | float | HUD position on screen, as last dragged |
-| `general` | `courseplayAutoResume` | bool | The **Resume Courseplay after loading** option (default `true`) — see [Resume After Save](../workflows/executing-workflows#resume-after-save) |
+
+Change them in-game under **ESC → Settings → General → Workflow Manager**. A `<settings>` block in
+an older `workflowManager.xml` is taken over once, the first time the new version loads that
+savegame, and ignored after that.
+
+### Editing the file while the game runs
+
+The game re-reads `workflowManager.xml` every time the Workflow Manager window opens, and before
+every change it writes itself (editor Save, Delete, AD/CP settings, game save). So you can replace
+the file — for example with the [Web Editor](../web-editor) — while the game is running:
+
+- Workflows changed in the file are picked up the next time you open the window; a running
+  workflow continues with the new steps (step numbers stay as they are)
+- Workflows removed from the file are stopped on every vehicle running them
+- A Save in the in-game editor overwrites that one workflow as a whole; changes to other
+  workflows in the file are kept
+- Quitting without saving the game does not write the file
 
 ### Workflow Element
 
@@ -120,7 +141,11 @@ Main steps are direct children of `<workflow>`. Steps that have support sub-step
 
 #### Support Sub-Step Attributes
 
-`<support>` elements use the same attributes as `<step>` (without nesting of their own).
+`<support>` elements use the same attributes as `<step>` (without nesting of their own), plus:
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `finishBeforeSwitch` | bool | No | `true` = when the main vehicle moves on to its next step while this sub-step runs, the support vehicle finishes it first. Written only when `true` |
 
 Steps with no support activity simply have no `<support>` children. You can leave the closing tag out entirely (self-closing `/>` is fine).
 

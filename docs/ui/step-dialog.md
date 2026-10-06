@@ -115,6 +115,21 @@ machine just before Courseplay starts, so a workflow can sow a different crop on
 
 See [Seed Type](../workflows/step-types#seed-type) for what happens at runtime.
 
+## Finish Before Switching
+
+Shown only for **support sub-steps** (every type except the two queue markers). It decides what
+the support vehicle does when the main vehicle moves on to its next step while this sub-step is
+still running:
+
+| Value | Behaviour |
+|-------|-----------|
+| **No** (default) | The sub-step is stopped at once and the support vehicle starts sub-step 1 of the main vehicle's new step |
+| **Yes** | The support vehicle finishes this sub-step first, then starts sub-step 1 of the step the main vehicle is on *now* — steps the main vehicle passed in the meantime are skipped |
+
+Use it for jobs that must not be cut off half-way, such as delivering a full trailer. Manual
+**Next** / **Previous** on the main vehicle's HUD still switches the support vehicle at once.
+See [Support Step Sequencing](../workflows/linked-workflows#support-step-sequencing).
+
 ## Confirming
 
 | Button | Effect |
@@ -125,8 +140,8 @@ See [Seed Type](../workflows/step-types#seed-type) for what happens at runtime.
 Validation is deliberately minimal:
 
 - For **AutoDrive** and **Courseplay** steps, a **target is required** — clicking **OK** with no
-  target selected does nothing at all. The dialog stays open with no error message, so if OK
-  appears unresponsive, check that a target is selected.
+  target selected keeps the dialog open and shows *Select a target before confirming the step* in
+  the status line at the bottom of the dialog.
 - For the five targetless types, only the type is stored. Pick the type and click **OK**.
 
 Second target, fill type and seed type are only saved when the chosen action actually uses

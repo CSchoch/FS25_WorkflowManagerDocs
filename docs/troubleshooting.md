@@ -209,7 +209,7 @@ an older version may have stored only the short name, which can match more than 
 
 **Solutions**:
 1. **Drag the HUD** to a better position — click and hold the HUD header and drag it anywhere on screen
-2. Known overlap with the F1 help menu — close the help menu when using workflows
+2. Overlap with the F1 help window — switch off **Show keys in the help window** under **ESC → Settings → General → Workflow Manager** to remove the Workflow Manager keys from it, or close the help window
 
 ---
 
@@ -283,10 +283,11 @@ All three are read-only and safe to run on a live save. See
 
 If you encounter issues not covered here:
 
-1. **Collect the game log**: Find `log.txt` in your Farming Simulator 25 root folder (the same folder as the game executable)
-2. **Capture the state**: Run `wmPrintStateAll` in the console while the problem is happening and copy the output
-3. **Note reproduction steps**: Write down exactly how to trigger the issue
-4. **Report on GitHub**: [Issues Page](https://github.com/CSchoch/FS25_WorkflowManager/issues)
+1. **Switch on debug logging**: **ESC → Settings → General → Workflow Manager → Debug logging**, then reproduce the problem — the log then contains the detailed messages needed to analyse it
+2. **Collect the game log**: Find `log.txt` in your Farming Simulator 25 root folder (the same folder as the game executable)
+3. **Capture the state**: Run `wmPrintStateAll` in the console while the problem is happening and copy the output
+4. **Note reproduction steps**: Write down exactly how to trigger the issue
+5. **Report on GitHub**: [Issues Page](https://github.com/CSchoch/FS25_WorkflowManager/issues)
 
 Include:
 - Mod version

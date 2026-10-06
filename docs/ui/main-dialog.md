@@ -136,8 +136,17 @@ If you save the game while a workflow is running, the vehicle's state is preserv
 
 Clicking **Start** in the main dialog always starts the workflow fresh from step 1.
 
+## Status Line
+
+Errors and infos while the dialog is open — for example *Enter a vehicle to start the workflow*
+after **Start**, or *Workflow stopped* — appear in the status line at the bottom of the dialog
+(errors in red) instead of the game's notifications, which would be hidden behind the dialog.
+
 ## Persistence
 
-- Workflows are auto-saved when closing the dialog
-- Changes are stored in `savegame[X]/workflowManager.xml`
+- Every change (editor Save, Delete, AD/CP settings) is written to
+  `savegame[X]/workflowManager.xml` immediately
+- The file is **read again every time the dialog opens**, so changes made to it while the game
+  runs (for example with the [Web Editor](../web-editor)) show up in the list — see
+  [Editing the file while the game runs](../api/xml-format#editing-the-file-while-the-game-runs)
 - Workflows persist between game sessions

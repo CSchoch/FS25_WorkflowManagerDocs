@@ -120,12 +120,14 @@ The editor works on a **copy** of the workflow, so nothing you do takes effect u
 For a workflow created with **New**, this is what keeps the list clean: the workflow is only
 registered on **Save**, so cancelling leaves no empty entry behind.
 
-:::warning Save is blocked while the workflow is running
-If the workflow you are editing is currently executing on a vehicle, **Save** refuses and shows
-the blinking warning *"Cannot save: workflow is currently running. Stop it first."* Stop the
-workflow, then save. Your edits stay in the dialog in the meantime — but leaving via **Cancel**
-discards them.
+:::warning Saving a running workflow
+You can save a workflow while vehicles are running it. They continue with the new steps right
+away, matched by step **number** — inserting, deleting or moving steps before the current one
+shifts what the vehicle does next. If the current step no longer exists, the workflow finishes.
 :::
+
+**Save** reads `workflowManager.xml` again before writing it, so changes made to *other*
+workflows in the file meanwhile (for example with the [Web Editor](../web-editor)) are kept.
 
 ## Best Practices
 

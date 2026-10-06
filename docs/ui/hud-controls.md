@@ -195,4 +195,4 @@ The HUD updates in real-time:
 
 ### HUD Overlapping Other UI
 - Drag the HUD to a different position by clicking and holding the header
-- The F1 help menu is a known overlap — close it when using workflows
+- The F1 help window can overlap — switch off **Show keys in the help window** in the [settings](../workflows/executing-workflows#settings) to drop the Workflow Manager keys from it
