@@ -111,7 +111,8 @@ With a linked savegame (Chrome, Edge), the lists fill themselves on **Open saveg
 
 Each list is grouped the way the game groups it — destinations by AutoDrive group, courses by
 field folder — and the field above it filters the list as you type; press Enter to add the typed
-name. Without a linked savegame or Courseplay folder, **Import file** reads the marker names of
+name. Click a group to fold it; its ✕ removes the whole group with its entries, and **Clear**
+removes everything listed (only the matches while you filter). Without a linked savegame or Courseplay folder, **Import file** reads the marker names of
 an `AutoDrive_config.xml` and **Import folder** reads the course names of your map's folder inside
 `Courses`. Names that your workflows already use are always listed.
 
