@@ -1,23 +1,144 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
+/* Home page. One device carries it: a workflow drawn as a route, as the web editor draws it —
+   a spine, stops coloured by the mod that runs them (--wm-ad / --wm-cp, set in custom.css),
+   sync markers as dashed gates. The only motion is the pulse on the running stop. */
 
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+.hero {
+  padding: clamp(2.5rem, 7vw, 5.5rem) 0 clamp(2rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
-
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.heroGrid {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
 }
+.heroCopy { max-width: 34rem; }
+.title {
+  font-family: var(--wm-font-display);
+  font-size: clamp(2rem, 4.2vw, 3.1rem); line-height: 1.08; font-weight: 700; letter-spacing: -0.02em;
+  margin: 0 0 1.1rem; text-wrap: balance;
+}
+.lede { font-size: 1.15rem; line-height: 1.6; color: var(--ifm-color-emphasis-700); margin: 0 0 1.75rem; max-width: 34em; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ---------- The route ---------- */
+.routeFigure { margin: 0; }
+.routeFigure figcaption {
+  margin: 1rem 0 0 calc(var(--spine) + 18px); font-size: 0.875rem; line-height: 1.5;
+  color: var(--ifm-color-emphasis-600); max-width: 42ch;
+}
+.route {
+  --spine: 48px;
+  list-style: none; margin: 0; padding: 0; position: relative;
+  font-size: 0.95rem;
+}
+.stop {
+  --sys: var(--wm-ad);
+  position: relative; display: grid; grid-template-columns: 36px 24px 10rem minmax(0, 1fr) auto;
+  align-items: center; column-gap: 0; min-height: 2.75rem; margin: 0;
+}
+.stop.cp { --sys: var(--wm-cp); }
+.stop.gate { --sys: var(--wm-marker); min-height: 2.25rem; }
+/* each stop draws its slice of the spine; the first and last stop only half */
+.stop::before {
+  content: ""; position: absolute; left: calc(var(--spine) - 1px); top: 0; bottom: 0; width: 2px;
+  background: var(--ifm-color-emphasis-300);
+}
+.stop:first-child::before { top: 50%; }
+/* the route goes on past the last stop shown */
+.stop:last-child::before {
+  bottom: -1.25rem;
+  background: linear-gradient(var(--ifm-color-emphasis-300), transparent);
+}
+.stop > * { position: relative; }
+
+.num { text-align: right; padding-right: 12px; font-size: 0.8rem; color: var(--ifm-color-emphasis-500); font-variant-numeric: tabular-nums; }
+.node {
+  justify-self: center; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--sys); box-shadow: 0 0 0 3px var(--ifm-background-color);
+}
+.gate .node { width: 10px; height: 10px; border-radius: 1px; transform: rotate(45deg); }
+.job { padding-left: 12px; font-weight: 600; white-space: nowrap; }
+.gate .job { grid-column: 3 / -1; display: flex; align-items: center; gap: 12px; color: var(--sys); }
+.gate .job::after {
+  content: ""; flex: 1; border-top: 2px dashed color-mix(in srgb, var(--wm-marker) 55%, transparent);
+}
+.where { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.grp { color: var(--ifm-color-emphasis-500); }
+.arrow { color: var(--ifm-color-emphasis-500); }
+
+/* support step: branches off the spine to a ringed stop */
+.support { grid-template-columns: 36px 24px 22px calc(10rem - 22px) minmax(0, 1fr) auto; font-size: 0.9rem; }
+.support .node {
+  grid-column: 3; width: 10px; height: 10px; background: var(--ifm-background-color);
+  box-shadow: inset 0 0 0 2px var(--sys), 0 0 0 3px var(--ifm-background-color);
+}
+.support::after {
+  content: ""; position: absolute; left: calc(var(--spine) - 1px); top: 0; height: 50%; width: 26px;
+  border-left: 2px solid var(--ifm-color-emphasis-300); border-bottom: 2px solid var(--ifm-color-emphasis-300);
+  border-bottom-left-radius: 10px;
+}
+.support .job { font-weight: 550; }
+
+/* the stop the vehicle is on */
+.running .node { animation: pulse 2.4s ease-out infinite; }
+.now { margin-left: 12px; font-size: 0.8rem; font-weight: 600; color: var(--sys); }
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 3px var(--ifm-background-color), 0 0 0 3px color-mix(in srgb, var(--sys) 45%, transparent); }
+  70%, 100% { box-shadow: 0 0 0 3px var(--ifm-background-color), 0 0 0 14px transparent; }
+}
+@media (prefers-reduced-motion: reduce) { .running .node { animation: none; } }
+
+/* ---------- Sections ---------- */
+.section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
+.section + .section { border-top: 1px solid var(--ifm-color-emphasis-200); }
+.h2 { font-family: var(--wm-font-display); font-size: clamp(1.5rem, 2.6vw, 1.9rem); font-weight: 700; letter-spacing: -0.01em; margin: 0 0 1rem; }
+
+/* What a step can be: three columns hung off coloured dots, like the step dialog's job groups */
+.groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; margin-top: 1.5rem; }
+.group { --sys: var(--wm-ad); }
+.group.cp { --sys: var(--wm-cp); }
+.group.gate { --sys: var(--wm-marker); }
+.groupName { display: flex; align-items: center; gap: 0.6rem; font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--sys); }
+.groupName .node { box-shadow: none; }
+.group.gate .groupName .node { width: 10px; height: 10px; border-radius: 1px; transform: rotate(45deg); }
+.group p { color: var(--ifm-color-emphasis-700); margin: 0 0 0.9rem; line-height: 1.6; }
+.jobs {
+  list-style: none; margin: 0; padding: 0 0 0 calc(6px - 1px);
+  border-left: 2px solid color-mix(in srgb, var(--sys) 35%, transparent);
+  columns: 2; column-gap: 1rem;
+}
+.jobs li { break-inside: avoid; margin: 0; padding: 0.2rem 0 0.2rem 1.1rem; font-weight: 600; font-size: 0.95rem; }
+.note { margin: 2.25rem 0 0; max-width: 46rem; color: var(--ifm-color-emphasis-700); line-height: 1.6; }
+
+/* In the game / in your browser: screenshot and its words side by side, alternating */
+.showcase { display: flex; flex-direction: column; gap: clamp(3rem, 7vw, 5rem); }
+.shot { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+.shot:nth-child(2) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); }
+.shot:nth-child(2) .shotText { order: -1; }
+.shot img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.stack { position: relative; padding: 0 0 2.5rem; }
+/* the HUD sits on the editor, as it sits on the game */
+.stack .hud {
+  position: absolute; right: -0.75rem; bottom: 0; width: 46%;
+  border-radius: 4px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+.browser { border: 1px solid var(--ifm-color-emphasis-300); box-shadow: 0 10px 34px rgba(20, 24, 16, 0.14); }
+.shotText p { color: var(--ifm-color-emphasis-700); line-height: 1.65; }
+.shotText kbd { font-size: 0.85em; }
+
+.needs ul { margin: 0 0 1.5rem; padding-left: 1.2rem; max-width: 40rem; line-height: 1.7; }
+
+@media (max-width: 996px) {
+  .heroGrid { grid-template-columns: 1fr; }
+  .groups { grid-template-columns: 1fr; gap: 2rem; }
+  .shot, .shot:nth-child(2) { grid-template-columns: 1fr; }
+  .shot:nth-child(2) .shotText { order: 0; }
+  .stack .hud { right: 0.5rem; width: 52%; }
+}
+@media (max-width: 600px) {
+  /* the destination drops under the job */
+  .stop { grid-template-columns: 36px 24px minmax(0, 1fr); min-height: 0; padding: 0.4rem 0; }
+  .where, .now { grid-column: 3; padding-left: 12px; margin-left: 0; font-size: 0.85rem; }
+  .support { grid-template-columns: 36px 24px 22px minmax(0, 1fr); }
+  .support .where { grid-column: 4; }
+  .gate .job { grid-column: 3 / -1; }
 }

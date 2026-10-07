@@ -22,13 +22,14 @@ browser.
 
 The editor mirrors the in-game editor feature for feature:
 
-- **Workflows** — create, rename, duplicate, delete, and search
+- **Workflows** — create, rename, duplicate, delete, and search (duplicate and delete sit next to
+  each workflow in the list)
 - **All seven step types** — AutoDrive, Courseplay, the sync markers *Wait for Leader* and
   *Unlock Follower*, and the targetless *Park* / *Refuel* / *Repair* steps (quick-add buttons,
   no dialog needed)
 - **AutoDrive modes** — Drive To, Pickup & Deliver, Deliver, Load, Unload, with the same dynamic
   target and second-target labels as the [Step Dialog](workflows/step-types#autodrive-steps)
-- **Courseplay actions** — Field Work and Bale Collect
+- **Courseplay actions** — Field Work (with an optional seed type) and Bale Collect
 - **Fill types** — multi-select with search; the full FS25 base list is built in, and custom mod
   fill type IDs can be typed in by hand
 - **Support sub-steps** — nest, reorder, edit, and duplicate support-vehicle steps under any main
@@ -48,13 +49,37 @@ In-game, AutoDrive is optional: a workflow with **AutoDrive**, **Park**, **Refue
 steps needs it to start, while a Courseplay-only workflow runs without it.
 :::
 
+## Reading the step list
+
+A workflow is drawn as a route, top to bottom, the order the vehicle runs it:
+
+- A **blue dot** is an AutoDrive step, a **green dot** a Courseplay step. A **ringed blue dot** is
+  Park, Refuel, or Repair — AutoDrive picks the spot itself.
+- **Wait for Leader** and **Unlock Follower** are drawn as dashed gates across the route.
+- **Support steps** branch off to the right of the main step they belong to (numbered `3.1`,
+  `3.2`, …).
+- Destinations show the AutoDrive group or Courseplay folder dimmed and the marker or course in
+  full. Two destinations are listed in driving order — a **Load** step shows *Load At* first, then
+  *Return To*.
+- A step with no target is marked in red.
+
+Click a step to edit it. Hovering a step (or tabbing to it) shows its buttons: add a support step,
+move up/down, duplicate, and delete. On a phone they're always shown.
+
+![Editing a Load step: the job picker on the left, the stops in driving order on the right](/img/screenshots/web-editor-step-dialog.png)
+
+The step dialog has one choice for what the vehicle does, grouped by the mod that runs it, and the
+fields that job needs. Its ‹ › arrows move to the previous or next step and keep your changes, like
+Save.
+
 ## Round-tripping your savegame
 
 ### Edit the savegame directly (Chrome, Edge)
 
 1. Click **Open savegame** and pick your savegame folder
-   (`.../My Games/FarmingSimulator2025/savegameN/`). Its `workflowManager.xml` is loaded and the
-   browser asks once to allow editing files in that folder.
+   (`.../My Games/FarmingSimulator2025/savegameN/`), or drag that folder from Explorer onto the
+   page. Its `workflowManager.xml` is loaded and the browser asks once to allow editing files in
+   that folder (for a dropped folder, on the first save).
 2. Build or edit your workflows.
 3. Click **Save to savegameN** — the file is written straight into the folder. The game can keep
    running: it reads the file again every time you open the Workflow Manager window.
@@ -70,8 +95,8 @@ workflow you're editing open.
 
 ### Import / Export (any browser)
 
-Firefox and Safari don't let web pages write into folders, so there the **Open savegame** button
-is hidden:
+Firefox and Safari don't let web pages write into folders, so there the **Open savegame** buttons
+(in the toolbar and on the welcome page) are hidden:
 
 1. **Import** your existing `workflowManager.xml` — use the file picker or just drop the file
    anywhere on the page.
@@ -93,6 +118,8 @@ correctly.
 :::
 
 ## Target suggestions
+
+![The Targets dialog: AutoDrive destinations and Courseplay courses, grouped as in-game](/img/screenshots/web-editor-targets.png)
 
 Target fields are free text, and they autocomplete from the lists under **Targets**. **Each
 savegame has its own lists**, so switching savegames never offers another map's markers or
