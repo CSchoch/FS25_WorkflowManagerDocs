@@ -76,10 +76,13 @@ Save.
 
 ### Edit the savegame directly (Chrome, Edge)
 
-1. Click **Open savegame** and pick your savegame folder
-   (`.../My Games/FarmingSimulator2025/savegameN/`), or drag that folder from Explorer onto the
-   page. Its `workflowManager.xml` is loaded and the browser asks once to allow editing files in
-   that folder (for a dropped folder, on the first save).
+1. Click **Open savegame** and pick the `.../My Games/FarmingSimulator2025/` folder, then choose
+   the savegame from the list (map, savegame name, last saved; newest first). Picking that folder
+   instead of a single `savegameN` also finds Courseplay's courses (see
+   [Target suggestions](#target-suggestions)). A `savegameN` folder works too, and either folder can
+   be dragged from Explorer onto the page. The savegame's `workflowManager.xml` is loaded and the
+   browser asks once to allow editing files in that folder (for a dropped folder, on the first
+   save).
 2. Build or edit your workflows.
 3. Click **Save to savegameN** — the file is written straight into the folder. The game can keep
    running: it reads the file again every time you open the Workflow Manager window.
@@ -130,16 +133,33 @@ With a linked savegame (Chrome, Edge), the lists fill themselves on **Open saveg
 
 - **AutoDrive destinations** are read from the savegame's `AutoDrive_config.xml`.
 - **Courseplay courses** live outside the savegame, per map
-  (`.../FarmingSimulator2025/modSettings/FS25_Courseplay/Courses/<map>/`). Open **Targets**, click
-  **Link folder** in the Courseplay half once and pick that `Courses` folder (or the
-  `FarmingSimulator2025` folder above it). From then on the editor reads the courses of whichever
-  map the open savegame uses. Picking one map's folder inside `Courses` works too, but then only
-  savegames on that map get their courses.
+  (`.../FarmingSimulator2025/modSettings/FS25_Courseplay/Courses/<map>/`). When you open the
+  `FarmingSimulator2025` folder, that `Courses` folder is found and linked automatically. From then
+  on the editor reads the courses of whichever map the open savegame uses, even when you later
+  open a `savegameN` folder directly.
+
+If something can't be found automatically, **Targets** opens by itself, and the half that's
+missing tells you why, next to the button that fixes it:
+
+| What's missing | Why | What to do |
+|---|---|---|
+| Courseplay courses | You opened a `savegameN` folder and no `Courses` folder is linked yet. A browser can't look outside the folder you picked. | **Link folder** and pick `Courses` or the `FarmingSimulator2025` folder, or open the `FarmingSimulator2025` folder next time. |
+| Courseplay courses | The linked folder is one map's folder, and this savegame plays another map. | **Change folder** and pick `Courses` itself, which covers every map. |
+| Courseplay courses | After a page reload, the browser needs your permission again. | **Allow access**. |
+| Courseplay courses | The linked folder can't be read (moved or deleted). | **Change folder**. |
+| AutoDrive destinations | The savegame has no `AutoDrive_config.xml`, but your workflows use AutoDrive steps. AutoDrive writes it when the game is saved. | **Import file**, or type destinations by hand. |
+
+You're only asked about a mod your workflows use: AutoDrive is optional, so a Courseplay-only
+workflow never asks for `AutoDrive_config.xml`.
+
+Picking one map's folder inside `Courses` with **Link folder** works too, but then only savegames
+on that map get their courses.
 
 Each list is grouped the way the game groups it — destinations by AutoDrive group, courses by
 field folder — and the field above it filters the list as you type; press Enter to add the typed
 name. Click a group to fold it; its ✕ removes the whole group with its entries, and **Clear**
-removes everything listed (only the matches while you filter). Without a linked savegame or Courseplay folder, **Import file** reads the marker names of
+removes everything listed (only the matches while you filter). Without a linked savegame or
+Courseplay folder, **Import file** reads the marker names of
 an `AutoDrive_config.xml` and **Import folder** reads the course names of your map's folder inside
 `Courses`. Names that your workflows already use are always listed.
 
