@@ -61,8 +61,12 @@ steps needs it to start, while a Courseplay-only workflow runs without it.
 
 The folder stays linked across page reloads; after a reload the browser asks for permission again
 on the first save. If the game changed the file since the editor loaded it (an in-game edit or a
-game save), Save asks before overwriting — click **Open savegame** again to load the newer file
-instead.
+game save), Save asks before overwriting — click **Reload** to load the newer file instead.
+
+**Reload** reads the linked savegame again: its `workflowManager.xml`, its AutoDrive destinations
+and its Courseplay courses (see [Target suggestions](#target-suggestions)). It only asks first if
+you changed something in the editor that you haven't saved to the savegame yet, and it keeps the
+workflow you're editing open.
 
 ### Import / Export (any browser)
 
@@ -90,14 +94,29 @@ correctly.
 
 ## Target suggestions
 
-The editor doesn't know your map, so target fields are free text by default. You can teach it
-your names three ways:
+Target fields are free text, and they autocomplete from the lists under **Targets**. **Each
+savegame has its own lists**, so switching savegames never offers another map's markers or
+courses.
 
-- Maintain the AutoDrive destination and Courseplay course lists by hand
-- Import marker names directly from an `AutoDrive_config.xml`
-- Import course names from your Courseplay course files
+With a linked savegame (Chrome, Edge), the lists fill themselves on **Open savegame** and
+**Reload**:
 
-Once loaded, targets autocomplete as you type.
+- **AutoDrive destinations** are read from the savegame's `AutoDrive_config.xml`.
+- **Courseplay courses** live outside the savegame, per map
+  (`.../FarmingSimulator2025/modSettings/FS25_Courseplay/Courses/<map>/`). Open **Targets**, click
+  **Link folder** in the Courseplay half once and pick that `Courses` folder (or the
+  `FarmingSimulator2025` folder above it). From then on the editor reads the courses of whichever
+  map the open savegame uses. Picking one map's folder inside `Courses` works too, but then only
+  savegames on that map get their courses.
+
+Each list is grouped the way the game groups it — destinations by AutoDrive group, courses by
+field folder — and the field above it filters the list as you type; press Enter to add the typed
+name. Without a linked savegame or Courseplay folder, **Import file** reads the marker names of
+an `AutoDrive_config.xml` and **Import folder** reads the course names of your map's folder inside
+`Courses`. Names that your workflows already use are always listed.
+
+AutoDrive destinations are listed the way the game's step dialog shows them: `group/marker`
+(for example `Felder 41-60/Feld 41`), or just the marker name for AutoDrive's default group.
 
 :::tip
 Courseplay course names are stored as **folder-qualified paths** (for example
