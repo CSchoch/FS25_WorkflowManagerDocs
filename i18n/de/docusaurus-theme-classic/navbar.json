@@ -1,0 +1,22 @@
+{
+  "title": {
+    "message": "FS25 Workflow Manager",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Workflow-Manager-Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Documentation": {
+    "message": "Dokumentation",
+    "description": "Navbar item with label Documentation"
+  },
+  "item.label.Web Editor": {
+    "message": "Web-Editor",
+    "description": "Navbar item with label Web Editor"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

@@ -26,6 +26,22 @@ yarn build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
+## Translations
+
+The site is published in English (default) and German (`/de/`). The German pages live in
+`i18n/de/`:
+
+- `docusaurus-plugin-content-docs/current/` — one translated copy of every page in `docs/`, same
+  file names. When you change a doc, change its German copy too. Headings that other pages link to
+  carry the English anchor (`## Speichern {#saving}`) so links work in both languages.
+- `code.json` — strings of the home page (`src/pages/index.tsx`, wrapped in `<Translate>` /
+  `translate()`) and the theme.
+- `docusaurus-theme-classic/` — navbar and footer labels.
+
+After adding a new translatable string or sidebar category, run
+`npm run write-translations -- --locale de` and translate the new entries. The dev server only
+serves one language at a time: `npm start -- --locale de` previews the German site.
+
 ## Deployment
 
 Using SSH:

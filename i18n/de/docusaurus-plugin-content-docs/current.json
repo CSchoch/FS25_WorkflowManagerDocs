@@ -1,0 +1,18 @@
+{
+  "version.label": {
+    "message": "Aktuell",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.Workflows": {
+    "message": "Workflows",
+    "description": "The label for category 'Workflows' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.User Interface": {
+    "message": "Benutzeroberfläche",
+    "description": "The label for category 'User Interface' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Reference": {
+    "message": "Referenz",
+    "description": "The label for category 'Reference' in sidebar 'docsSidebar'"
+  }
+}

@@ -23,7 +23,11 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'de'],
+    localeConfigs: {
+      en: {label: 'English', htmlLang: 'en'},
+      de: {label: 'Deutsch', htmlLang: 'de'},
+    },
   },
 
   presets: [
@@ -66,6 +70,10 @@ const config: Config = {
           href: 'https://cschoch.github.io/FS25_WorkflowManagerWebeditor/',
           label: 'Web Editor',
           position: 'left',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
         },
         {
           href: 'https://github.com/CSchoch/FS25_WorkflowManager',

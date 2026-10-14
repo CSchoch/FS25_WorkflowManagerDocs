@@ -1,0 +1,54 @@
+{
+  "link.title.Documentation": {
+    "message": "Dokumentation",
+    "description": "The title of the footer links column with title=Documentation in the footer"
+  },
+  "link.title.Community": {
+    "message": "Community",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.More": {
+    "message": "Mehr",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.item.label.Getting Started": {
+    "message": "Erste Schritte",
+    "description": "The label of footer link with label=Getting Started linking to /docs/getting-started"
+  },
+  "link.item.label.Creating Workflows": {
+    "message": "Workflows erstellen",
+    "description": "The label of footer link with label=Creating Workflows linking to /docs/workflows/creating-workflows"
+  },
+  "link.item.label.Web Editor": {
+    "message": "Web-Editor",
+    "description": "The label of footer link with label=Web Editor linking to /docs/web-editor"
+  },
+  "link.item.label.AutoDrive Reference": {
+    "message": "AutoDrive-Referenz",
+    "description": "The label of footer link with label=AutoDrive Reference linking to /docs/api/autodrive"
+  },
+  "link.item.label.Giants Forum": {
+    "message": "Giants-Forum",
+    "description": "The label of footer link with label=Giants Forum linking to https://forum.giants-software.com/"
+  },
+  "link.item.label.AutoDrive": {
+    "message": "AutoDrive",
+    "description": "The label of footer link with label=AutoDrive linking to https://github.com/Stephan-S/FS25_AutoDrive"
+  },
+  "link.item.label.Courseplay": {
+    "message": "Courseplay",
+    "description": "The label of footer link with label=Courseplay linking to https://github.com/Courseplay/Courseplay_FS25"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/CSchoch/FS25_WorkflowManager"
+  },
+  "link.item.label.Report Issues": {
+    "message": "Fehler melden",
+    "description": "The label of footer link with label=Report Issues linking to https://github.com/CSchoch/FS25_WorkflowManager/issues"
+  },
+  "copyright": {
+    "message": "Copyright © 2026 FS25 Workflow Manager. Erstellt mit Docusaurus.",
+    "description": "The footer copyright"
+  }
+}
