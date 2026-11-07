@@ -9,6 +9,8 @@ sidebar_position: 6
 This dialog picks which already-running vehicle the starting vehicle should treat as its
 **leader** for the [queue system](../workflows/queue-system).
 
+![Leader Vehicle Select Dialog](/img/screenshots/leader-select-dialog.png)
+
 ## When it appears
 
 It appears on **Start** whenever at least one *other* vehicle is already running a workflow. If
@@ -23,10 +25,12 @@ Each row shows one running vehicle:
 
 | Column | Description |
 |--------|-------------|
-| Vehicle name | The vehicle's in-game name |
-| Workflow name | The workflow that vehicle is currently running |
+| Vehicle | The vehicle's in-game name |
+| Workflow Name | The workflow that vehicle is currently running |
+| Current Step | Where that vehicle is right now, e.g. `2/10 · Field Work` (step 2 of 10, then the action or step type) |
 
-The first entry is selected when the dialog opens. Double-clicking a row selects that vehicle and
+The list is sorted by vehicle name, then by workflow name, so it keeps the same order every time
+it opens. The first entry is selected when the dialog opens. Double-clicking a row selects that vehicle and
 confirms in one action.
 
 ## Buttons

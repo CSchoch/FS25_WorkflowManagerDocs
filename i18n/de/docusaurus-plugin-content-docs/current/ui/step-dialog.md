@@ -7,10 +7,13 @@ sidebar_position: 3
 # Schritt-Dialog
 
 Im Schritt-Dialog konfigurierst du einen einzelnen Workflow-Schritt. Er öffnet sich aus dem
-[Editor-Dialog](editor-dialog) über **Schritt hinzufügen**, **Unterstützungsschritt hinzufügen** oder **Bearbeiten** (oder per
+[Editor-Dialog](editor-dialog) über **Neu**, **+ Unterstützung** oder **Bearbeiten** (oder per
 Doppelklick auf eine Schrittzeile).
 
 ![Schritt-Dialog – AutoDrive](/img/screenshots/step-dialog-autodrive.png)
+
+Die Zeile unter dem Titel nennt den Workflow und den Schritt, den du gerade bearbeitest – zum Beispiel
+`Ernte · Schritt 3`, `Ernte · Unterstützungsschritt 3.1` oder `Ernte · neuer Schritt`.
 
 Der Dialog ist **adaptiv**: Er zeigt nur die Felder, die der gewählte Typ und die gewählte Aktion tatsächlich brauchen.
 Wählst du einen Typ ohne Ziel, schrumpft er auf eine einzige Auswahlliste zusammen.
@@ -33,7 +36,7 @@ Wenn du den Typ änderst, wird die Auswahlliste **Aktion** neu aufgebaut und der
 Was die einzelnen Typen zur Laufzeit tun, steht unter [Schritttypen](../workflows/step-types).
 
 :::note Unterstützungsschritte
-Öffnest du den Dialog über **Unterstützungsschritt hinzufügen**, werden die beiden Warteschlangen-Marker – *Auf Anführer warten*
+Öffnest du den Dialog über **+ Unterstützung**, werden die beiden Warteschlangen-Marker – *Auf Anführer warten*
 und *Folger freigeben* – **aus der Auswahlliste „Typ“ entfernt**. Anführer-/Folger-Paare werden
 nur aus Hauptschritten gebildet.
 
@@ -60,19 +63,20 @@ Welche Aktionen verfügbar sind, hängt vom Typ ab:
 
 Die Aktion bestimmt, welche der übrigen Felder erscheinen:
 
-| Aktion | Zweites Ziel | Fülltyp | Saatgut |
-|--------|---------------|-----------|-----------|
-| Fahren zu, Abladen | – | – | – |
-| Drescher abfahren | Liefern an | – | – |
-| Abholen und Liefern | Liefern an | Ja | – |
-| Abholen | **Ladepunkt** | Ja | – |
-| Feldarbeit | – | – | Ja |
-| Ballen sammeln | – | – | – |
+| Aktion | Erstes Ziel | Zweites Ziel | Fülltyp | Saatgut |
+|--------|--------------|---------------|-----------|-----------|
+| Fahren zu, Abladen | Ziel | – | – | – |
+| Drescher abfahren | Ziel | Liefern an | – | – |
+| Abholen und Liefern | Ziel | Liefern an | Ja | – |
+| Abholen | **Beladen bei** | Liefern an | Ja | – |
+| Feldarbeit | Ziel | – | – | Ja |
+| Ballen sammeln | Ziel | – | – | – |
 
-:::tip
-Die Beschriftung des zweiten Ziels ändert sich mit der Aktion – bei der Aktion *Abholen* lautet sie **Ladepunkt**,
-bei allen anderen **Liefern an**. Gleiches Feld, andere Bedeutung – lies also die Beschriftung, statt
-dich auf die Position zu verlassen.
+:::tip Abholen zeigt die Route in Fahrreihenfolge
+Der Modus *Abholen* von AutoDrive fährt **zuerst** zum Ladepunkt und dann weiter zum Ziel. Der
+Dialog zeigt die beiden Ziele in dieser Reihenfolge: Der erste Block ist **Beladen bei**, der zweite
+**Liefern an**. Wechselst du die Aktion zu *Abholen* oder weg davon, wandern deine beiden Auswahlen
+mit, sodass sie ihre Bedeutung behalten.
 :::
 
 ## Ziel
@@ -81,10 +85,13 @@ Die Liste **Ziel** enthält je nach Typ AutoDrive-Ziele oder Courseplay-Kurse.
 
 - Tippe in das **Suchfeld** über der Liste, um sie während der Eingabe zu filtern
 - Klicke auf einen Eintrag, um ihn auszuwählen
-- Die aktuelle Auswahl steht in der Zeile **Ausgewählt** unter der Liste
+- Die aktuelle Auswahl steht in der Zeile **Ausgewählt** unter der Liste. Ist nichts ausgewählt,
+  steht dort in Bernstein *(keins) – bitte aus der Liste wählen*
 
-Courseplay-Kurse erscheinen als Pfade mit Ordnerangabe (z. B. `Singleplayer/F34/Kalken`), damit
-gleichnamige Kurse in verschiedenen Ordnern unterscheidbar bleiben – siehe
+Courseplay-Kurse erscheinen als Pfade mit Ordnerangabe (z. B. `F34/Kalken`), damit
+gleichnamige Kurse in verschiedenen Ordnern unterscheidbar bleiben. Der führende Ordner
+`Singleplayer/`, den Courseplay jedem Kurs voranstellt, wird in der Anzeige weggelassen
+(der Schritt speichert weiterhin den vollständigen Pfad) – siehe
 [Kursauswahl](../workflows/step-types#course-selection).
 
 ## Fülltyp
@@ -97,7 +104,7 @@ wichtig, wenn an einem Ort mehrere Fülltypen verfügbar sind.
 | **Klick** auf einen Eintrag | Wählt ihn aus und ersetzt eine bisherige Auswahl |
 | **Strg+Klick** auf einen Eintrag | Schaltet ihn ein oder aus und baut so eine Mehrfachauswahl auf |
 
-- Ausgewählte Einträge sind mit einem grünen **✓** markiert
+- Ausgewählte Einträge erscheinen grün mit einem **»** davor
 - Die Zeile darunter zeigt bis zu zwei Namen (`Ausgewählt: Weizen, Gerste`) oder bei größeren
   Auswahlen die Anzahl (`Ausgewählt: 3 ausgewählt`)
 - Lass das Feld leer, um **jeden** Fülltyp zu akzeptieren

@@ -19,6 +19,8 @@ the vehicle starts as the main vehicle.
 
 ## Choices
 
+The dialog describes both roles above its buttons, so the choice can be made without this page.
+
 | Button | Effect |
 |--------|--------|
 | **Main** | The vehicle runs the workflow's main steps — the combine, harvester, or whichever vehicle does the primary job |
@@ -34,9 +36,10 @@ A **main** vehicle executes steps 1, 2, 3… in order. A **support** vehicle ign
 instead executes the sub-steps attached to whichever main step the main vehicle is currently on.
 When it finishes its sub-steps for that step, it waits until the main vehicle advances.
 
-The HUD reflects the role: a support vehicle shows a sub-step counter like `Step 2.1/2` and a
-*Waiting for main vehicle* status, while a main vehicle shows a badge counting its active
-support vehicles. See [HUD Controls](hud-controls#main-vehicle-with-support-vehicles).
+The HUD reflects the role: a support vehicle shows a sub-step counter like `Step 2 · support 1/2`,
+the main vehicle's name, and a *Waiting for main vehicle* status, while a main vehicle shows a
+*Supporters:* line counting its support vehicles by state. See
+[HUD Controls](hud-controls#main-vehicle-with-support-vehicles).
 
 ## Not the same as the queue system
 

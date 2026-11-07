@@ -48,7 +48,7 @@ AutoDrive übernimmt alle Fahrten und Transporte.
 Bei Ladevorgängen (Abholen und Liefern, Abholen) kannst du einen oder mehrere Fülltypen wählen:
 - **Klick** auf einen Eintrag wählt ihn aus (ersetzt die bisherige Auswahl)
 - **Strg+Klick** auf einen Eintrag schaltet ihn um (fügt ihn einer Mehrfachauswahl hinzu oder entfernt ihn)
-- Ausgewählte Einträge sind grün mit einem **✓** davor markiert
+- Ausgewählte Einträge sind grün mit einem **»** davor markiert
 - Die Zeile unter der Liste zeigt die gewählten Typen: `Ausgewählt: Weizen, Gerste` (bis zu 2 Namen) oder bei größeren Auswahlen die Anzahl
 - Begrenzt, was das Fahrzeug aufnimmt – praktisch, wenn an einem Ort mehrere Fülltypen verfügbar sind
 - Leer lassen, um jeden Fülltyp zu akzeptieren
@@ -103,6 +103,8 @@ Courseplay übernimmt alle Feldarbeiten.
 Kursnamen werden als **Pfade mit Ordner** gespeichert statt als nackte Namen, z. B.
 `Singleplayer/F34/Kalken` statt nur `Kalken`. Das ist wichtig, wenn derselbe Kursname in mehreren
 Ordnern vorkommt: Ein Schritt, der `F34/Kalken` verlangt, darf nicht `F09/Kalken` laden.
+Dialoge und das HUD lassen das vorangestellte `Singleplayer/` weg und zeigen `F34/Kalken`; der
+Schritt speichert weiterhin den vollen Pfad.
 
 :::note Kurse aus älteren Versionen
 Workflows, die vor der Einführung der Namen mit Ordner angelegt wurden, haben kürzere Pfade

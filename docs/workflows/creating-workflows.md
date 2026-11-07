@@ -85,11 +85,11 @@ Support sub-steps let a second vehicle (e.g., a grain cart) work alongside the m
 ### How to Add a Support Sub-Step
 
 1. In the editor, select a **main step** (numbered `1`, `2`, `3`, …)
-2. Click **Add Support Step** at the bottom of the editor
+2. Click **+ Support** at the top of the step list
 3. Configure the sub-step in the Step Dialog (same fields as a regular step)
 4. Click **OK**
 
-The sub-step appears indented below the main step, numbered `N.M` (e.g., `2.1`, `2.2`).
+The sub-step appears indented below the main step on a darker band, numbered `→ N.M` (e.g., `→ 2.1`, `→ 2.2`).
 
 Repeat to add multiple sub-steps. They execute in order while the main vehicle stays on that step.
 
@@ -112,7 +112,7 @@ See [Multi-Vehicle Workflows](linked-workflows) for full details on how the supp
 
 ### Reordering Steps
 
-- Select a step and use **Move Up** / **Move Down** buttons
+- Select a step and use the **↑** / **↓** buttons
 - Or use keyboard shortcuts: **U** to move up, **D** to move down
 - Support sub-steps are reordered within their parent step only
 

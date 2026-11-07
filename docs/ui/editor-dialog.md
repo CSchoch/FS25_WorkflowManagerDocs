@@ -19,39 +19,37 @@ The Editor Dialog is where you build and modify workflow steps.
 
 ## Step List
 
-The step list shows main steps and their support sub-steps in a single nested list. Main steps are numbered starting at 1. Support sub-steps appear indented directly below their parent step, numbered `N.M` — where `N` is the parent step number and `M` is the sub-step's position within that step.
+The step list shows main steps and their support sub-steps in a single nested list. Main steps are numbered starting at 1. Support sub-steps appear directly below their parent step on a darker band, indented and numbered `→ N.M` — where `N` is the parent step number and `M` is the sub-step's position within that step.
 
 | Column | Description |
 |--------|-------------|
-| # | Step number (`1`, `2`, …) or sub-step number (`2.1`, `2.2`, …) |
-| Type | The step type — AutoDrive, Courseplay, a queue marker, or Park / Refuel / Repair |
-| Target | Destination name or course name (empty for targetless types) |
-| Action | The action to perform |
-| Sup | Shows `+N` on main step rows that have N support sub-steps |
+| # | Step number (`1`, `2`, …) or sub-step number (`→ 2.1`, `→ 2.2`, …) |
+| Type | A coloured chip: **AD** (blue) for AutoDrive, **PARK** / **REFUEL** / **REPAIR** (blue), **CP** (green) for Courseplay, **WM** (amber) for the queue markers |
+| Action | The action to perform. Steps without an action show their type name instead (*Park*, *Wait for Leader*, …); the queue markers are written in amber |
+| Target | Destination name or course name (empty for targetless types). Courseplay courses are shown without the leading `Singleplayer/` folder |
 
-### For AutoDrive steps with two destinations:
-- Shows `Target → Unload Target` format
-- Example: `Farm/Silo → Sell/Mill`
+A support sub-step set to [Finish before switching](step-dialog#finish-before-switching) shows
+`· finish first` after its target.
 
 ## Action Buttons
 
-### Add Step
+### New
 
 Opens the Step Dialog to add a new **main step**:
-1. Click **Add Step**
+1. Click **New**
 2. Configure the step (type, target, action)
 3. Click **OK**
 4. Step is added at the end of the list
 
-### Add Support Step
+### + Support
 
 Adds a support sub-step to the currently selected **main step**:
 1. Select a main step row (numbered `1`, `2`, `3`, …)
-2. Click **Add Support Step**
+2. Click **+ Support**
 3. Configure the sub-step in the Step Dialog
 4. Click **OK**
 
-The new sub-step appears indented below its parent, numbered `N.M`. The **Add Support Step** button is disabled when a support sub-step row is selected — select the parent main step first.
+The new sub-step appears below its parent, numbered `→ N.M`. The **+ Support** button is disabled when a support sub-step row is selected — select the parent main step first.
 
 For more on support sub-steps and multi-vehicle setups, see [Multi-Vehicle Workflows](../workflows/linked-workflows).
 
@@ -75,7 +73,7 @@ Deleting a main step also removes all of its support sub-steps.
 Deleting a step automatically renumbers remaining steps.
 :::
 
-### Move Up (↑) / Move Down (↓)
+### ↑ / ↓ (Move Up / Move Down)
 
 Reorder steps:
 - For **main steps**: swaps the step with the one above or below

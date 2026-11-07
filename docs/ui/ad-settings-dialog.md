@@ -25,7 +25,7 @@ Percentages are entered as whole numbers (`80`, not `0.8`) and stored internally
 Pipe Offset is entered in meters and may be fractional.
 
 :::tip
-Leave a field **empty** to leave that setting unchanged — the workflow uses whatever value is
+The dialog says it too, under the fields: leave a field **empty** to leave that setting unchanged — the workflow uses whatever value is
 already configured in AutoDrive for that vehicle. An empty field is not the same as zero.
 :::
 

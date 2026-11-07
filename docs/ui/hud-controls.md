@@ -20,19 +20,26 @@ Hovering over any button shows a tooltip label: **Previous Step**, **Pause**, **
 
 ### Main Vehicle with Support Vehicles
 
-If one or more support vehicles are following the same workflow, a colored badge appears next to the workflow name in the header:
+If one or more support vehicles are running the same workflow, an extra line at the bottom
+counts them by state:
 
-![Main vehicle HUD with support badge](/img/screenshots/hud-support-main.png)
+![Main vehicle HUD with support vehicles](/img/screenshots/hud-support-main.png)
 
-The `[NS]` badge shows the number of active support vehicles. Its color indicates their combined status: **green** (running), **orange** (paused), **gray** (idle/waiting).
+`Supporters: 1 working · 1 waiting` — each state is coloured: **green** working, **orange**
+paused, **yellow** waiting (for the main vehicle or for a leader). States no support vehicle is in
+are left out.
 
 ### Support Vehicle HUD
 
-When running as a **support vehicle**, the HUD shows which main step is being followed and which sub-step is currently executing:
+When running as a **support vehicle**, the step line shows which main step is being followed and
+which sub-step is running:
 
 ![Support vehicle HUD](/img/screenshots/hud-support-vehicle.png)
 
-`Step 2.1/2` means: the main vehicle is on step 2, and the support vehicle is executing sub-step 1 of 2 sub-steps for that main step. When the support vehicle finishes all sub-steps it waits until the main advances.
+`Step 2 · support 1/2` means: the main vehicle is on step 2, and the support vehicle is running
+sub-step 1 of the 2 sub-steps of that main step. When it has finished all of them it waits until
+the main vehicle advances. The bottom line reads **Main vehicle:** followed by its name — click
+the name to switch into the main vehicle.
 
 ## HUD Position
 
@@ -44,17 +51,35 @@ The HUD can be freely repositioned by dragging:
 
 ## Status Display
 
-### Header / Workflow Name
-The header shows just **WorkflowManager** — the controlled vehicle is already obvious from being in the seat. The line below shows the workflow name, including the support badge if support vehicles are active.
+### Header
+The header shows **Workflow Manager** and an **X** on the right. The X closes the HUD — the same
+as **Left Alt + H**. The line below shows the workflow name.
 
-### Step Counter
-Shows current step and total steps (e.g., `Step 2/5`). For support vehicles, shows the sub-step counter (e.g., `Step 2.1/2`).
+### Step Line
+A coloured chip names the system the step uses, followed by the step counter and the target:
 
-### Step Target
-Displays a compact type tag ahead of the target destination or course name, e.g. `[AD] Field1_Harvest`, `[CP] Field1_Wheat_Harvest`, `[PARK]`, `[REFUEL]`, `[REPAIR]`. Marker steps (Wait for Leader, Unlock Follower) show `[WM]`.
+| Chip | Colour | Steps |
+|------|--------|-------|
+| `AD` | Blue | AutoDrive steps |
+| `PARK`, `REFUEL`, `REPAIR` | Blue | Park, Refuel, Repair (driven by AutoDrive) |
+| `CP` | Green | Courseplay steps |
+| `WM` | Amber | Wait for Leader, Unlock Follower |
+
+The text reads `Step 2/5: Field1_Harvest` on a main vehicle and `Step 2 · support 1/2: Silo` on a
+support vehicle. Courseplay courses are shown without the leading `Singleplayer/` folder; steps
+without a target show their type name instead.
+
+### Progress Bar
+A thin bar under the step line shows how much of the workflow is done: the finished steps plus,
+while Courseplay is working, its progress on the current field. It has the colour of the current
+step's chip.
+
+### Vehicle Status
+The line below the bar shows what the vehicle is doing right now: **CP active (42%)**,
+**AD active**, **Paused**, or **Idle**.
 
 ### Waiting for Leader / Waiting for Main
-When the vehicle is parked at a **Wait for Leader** step, or is a support vehicle that has finished its sub-steps, the status line reads **Waiting for leader** or **Waiting for main vehicle** followed by that vehicle's name. The name is clickable — click it to jump straight into that vehicle (same as AutoDrive's and Courseplay's own "switch vehicle" links).
+When the vehicle is parked at a **Wait for Leader** step, or is a support vehicle that has finished its sub-steps, the status line reads **Waiting for leader** or **Waiting for main vehicle** followed by that vehicle's name. The name is clickable — click it to jump straight into that vehicle (same as AutoDrive's and Courseplay's own "switch vehicle" links). Hovering it shows *Click to switch to this vehicle*.
 
 ## Control Buttons
 
@@ -156,7 +181,7 @@ If the cursor ever gets stuck on, toggling the HUD off and on with **Left Alt + 
 
 ### Toggle HUD
 
-Press **Left Alt + H** to show or hide the HUD overlay.
+Press **Left Alt + H** to show or hide the HUD overlay, or click the **X** in the header to close it.
 
 ## When HUD Appears
 
@@ -172,13 +197,13 @@ The HUD hides when:
 ## HUD Updates
 
 The HUD updates in real-time:
-- Step counter updates on step change
+- Step line and progress bar update on step change
 - Button states update on workflow state change
 - Target info updates for each step
 
 ## Customization
 
-- Toggle the HUD with **Left Alt + H**
+- Toggle the HUD with **Left Alt + H**, or close it with the **X** in its header
 - Reposition the HUD by dragging the header to any location on screen
 
 ## Troubleshooting

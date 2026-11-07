@@ -53,11 +53,11 @@ Lege einen einzigen Workflow mit allen Hauptschritten in der richtigen Reihenfol
 
 1. Öffne den **Workflow Manager** und den Workflow im **Editor**
 2. Wähle einen Hauptschritt in der Liste
-3. Klicke unten im Editor auf **Unterstützungsschritt hinzufügen**
+3. Klicke oben in der Schrittliste auf **+ Unterstützung**
 4. Richte den Unterstützungsschritt (Typ, Ziel, Aktion) im Schritt-Dialog ein
 5. Klicke auf **OK**
 
-Der neue Unterstützungsschritt erscheint eingerückt unter dem Hauptschritt in der Liste, nummeriert `N.M` (z. B. `2.1`, `2.2`).
+Der neue Unterstützungsschritt erscheint eingerückt unter dem Hauptschritt in der Liste auf einem dunkleren Streifen, nummeriert `→ N.M` (z. B. `→ 2.1`, `→ 2.2`).
 
 Wiederhole das für jeden Hauptschritt, bei dem das Hilfsfahrzeug etwas tun soll. Schritte ohne Unterstützungsschritte (z. B. Fahren-zu-Schritte, bei denen das Hilfsfahrzeug nur wartet) bleiben einfach leer.
 
@@ -82,8 +82,8 @@ Der Editor zeigt Hauptschritte und ihre Unterstützungsschritte in einer gemeins
 
 - Wähle eine beliebige Zeile (Haupt- oder Unterstützungsschritt) und klicke auf **Bearbeiten**, um sie zu ändern
 - **Löschen** entfernt die gewählte Zeile (Haupt- oder Unterstützungsschritt)
-- **Nach oben / Nach unten** sortiert Hauptschritte um, oder Unterstützungsschritte innerhalb ihres Hauptschritts
-- Die Spalte **Unt** zeigt in Zeilen von Hauptschritten `+N`, wobei N die Zahl der Unterstützungsschritte ist
+- **↑ / ↓** sortiert Hauptschritte um, oder Unterstützungsschritte innerhalb ihres Hauptschritts
+- Im [Haupt-Dialog](../ui/main-dialog) zeigt die Spalte **Unterstützung** bei Workflows mit Unterstützungsschritten **Ja**
 
 ## Verhalten zur Laufzeit
 
@@ -123,9 +123,9 @@ Beim Speichern des Spiels werden die **Rolle** (Haupt- oder Hilfsfahrzeug) und d
 
 ### HUD des Hauptfahrzeugs
 
-Sind ein oder mehrere Hilfsfahrzeuge aktiv, zeigt das HUD ihren gemeinsamen Status:
+Sind ein oder mehrere Hilfsfahrzeuge aktiv, zählt eine Zeile *Unterstützer:* sie nach Status auf (z. B. `Unterstützer: 1 aktiv · 1 wartet`):
 
-![HUD des Hauptfahrzeugs mit Hilfsfahrzeug-Anzeige](/img/screenshots/hud-support-main.png)
+![HUD des Hauptfahrzeugs mit Hilfsfahrzeugen](/img/screenshots/hud-support-main.png)
 
 ### HUD des Hilfsfahrzeugs
 
@@ -133,7 +133,7 @@ Das HUD des Hilfsfahrzeugs zeigt, welchem Hauptschritt es folgt und welchen Unte
 
 ![HUD des Hilfsfahrzeugs](/img/screenshots/hud-support-vehicle.png)
 
-`Schritt 2.1/2` bedeutet: Das Hauptfahrzeug ist bei Schritt 2, das Hilfsfahrzeug bei Unterstützungsschritt 1 von 2.
+`Schritt 2 · Unterstützung 1/2` bedeutet: Das Hauptfahrzeug ist bei Schritt 2, das Hilfsfahrzeug bei Unterstützungsschritt 1 von 2. Die unterste Zeile nennt das Hauptfahrzeug – klicke auf den Namen, um in es zu wechseln.
 
 ## Mehrere Hilfsfahrzeuge
 

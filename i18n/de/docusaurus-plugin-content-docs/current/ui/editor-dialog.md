@@ -19,39 +19,37 @@ Im Editor-Dialog baust du die Schritte eines Workflows auf und änderst sie.
 
 ## Schrittliste
 
-Die Schrittliste zeigt die Hauptschritte und ihre Unterstützungsschritte in einer gemeinsamen, verschachtelten Liste. Hauptschritte sind ab 1 durchnummeriert. Unterstützungsschritte erscheinen eingerückt direkt unter ihrem übergeordneten Schritt und tragen die Nummer `N.M` – dabei ist `N` die Nummer des übergeordneten Schritts und `M` die Position des Unterstützungsschritts innerhalb dieses Schritts.
+Die Schrittliste zeigt die Hauptschritte und ihre Unterstützungsschritte in einer gemeinsamen, verschachtelten Liste. Hauptschritte sind ab 1 durchnummeriert. Unterstützungsschritte erscheinen direkt unter ihrem übergeordneten Schritt auf einem dunkleren Band, eingerückt und nummeriert als `→ N.M` – dabei ist `N` die Nummer des übergeordneten Schritts und `M` die Position des Unterstützungsschritts innerhalb dieses Schritts.
 
 | Spalte | Beschreibung |
 |--------|-------------|
-| # | Schrittnummer (`1`, `2`, …) oder Nummer des Unterstützungsschritts (`2.1`, `2.2`, …) |
-| Typ | Der Schritttyp – AutoDrive, Courseplay, ein Warteschlangen-Marker oder Parken / Auftanken / Reparieren |
-| Ziel | Name des Ziels oder des Kurses (leer bei Typen ohne Ziel) |
-| Aktion | Die auszuführende Aktion |
-| Unt | Zeigt `+N` in Zeilen von Hauptschritten, die N Unterstützungsschritte haben |
+| # | Schrittnummer (`1`, `2`, …) oder Nummer des Unterstützungsschritts (`→ 2.1`, `→ 2.2`, …) |
+| Typ | Ein farbiger Chip: **AD** (blau) für AutoDrive, **PARK** / **REFUEL** / **REPAIR** (blau), **CP** (grün) für Courseplay, **WM** (bernsteinfarben) für die Warteschlangen-Marker |
+| Aktion | Die auszuführende Aktion. Schritte ohne Aktion zeigen stattdessen ihren Typnamen (*Parken*, *Auf Anführer warten*, …); die Warteschlangen-Marker sind in Bernstein geschrieben |
+| Ziel | Name des Ziels oder des Kurses (leer bei Typen ohne Ziel). Courseplay-Kurse werden ohne den vorangestellten Ordner `Singleplayer/` angezeigt |
 
-### Bei AutoDrive-Schritten mit zwei Zielen:
-- Anzeige im Format `Ziel → Abladeziel`
-- Beispiel: `Farm/Silo → Sell/Mill`
+Ein Unterstützungsschritt mit der Einstellung [Vor dem Wechsel abschließen](step-dialog#finish-before-switching) zeigt
+nach seinem Ziel `· zuerst abschließen`.
 
 ## Aktionstasten
 
-### Schritt hinzufügen
+### Neu
 
 Öffnet den Schritt-Dialog, um einen neuen **Hauptschritt** hinzuzufügen:
-1. Klicke auf **Schritt hinzufügen**
+1. Klicke auf **Neu**
 2. Richte den Schritt ein (Typ, Ziel, Aktion)
 3. Klicke auf **OK**
 4. Der Schritt wird am Ende der Liste angefügt
 
-### Unterstützungsschritt hinzufügen
+### + Unterstützung
 
 Fügt dem gerade ausgewählten **Hauptschritt** einen Unterstützungsschritt hinzu:
 1. Wähle die Zeile eines Hauptschritts (nummeriert `1`, `2`, `3`, …)
-2. Klicke auf **Unterstützungsschritt hinzufügen**
+2. Klicke auf **+ Unterstützung**
 3. Richte den Unterstützungsschritt im Schritt-Dialog ein
 4. Klicke auf **OK**
 
-Der neue Unterstützungsschritt erscheint eingerückt unter seinem übergeordneten Schritt mit der Nummer `N.M`. Die Taste **Unterstützungsschritt hinzufügen** ist deaktiviert, solange die Zeile eines Unterstützungsschritts ausgewählt ist – wähle zuerst den übergeordneten Hauptschritt.
+Der neue Unterstützungsschritt erscheint unter seinem übergeordneten Schritt mit der Nummer `→ N.M`. Die Taste **+ Unterstützung** ist deaktiviert, solange die Zeile eines Unterstützungsschritts ausgewählt ist – wähle zuerst den übergeordneten Hauptschritt.
 
 Mehr zu Unterstützungsschritten und Aufbauten mit mehreren Fahrzeugen findest du unter [Workflows mit mehreren Fahrzeugen](../workflows/linked-workflows).
 
@@ -75,7 +73,7 @@ Wenn du einen Hauptschritt löschst, werden auch alle seine Unterstützungsschri
 Nach dem Löschen eines Schritts werden die übrigen Schritte automatisch neu nummeriert.
 :::
 
-### Nach oben (↑) / Nach unten (↓)
+### ↑ / ↓ (Nach oben / Nach unten)
 
 Ändert die Reihenfolge der Schritte:
 - Bei **Hauptschritten**: tauscht den Schritt mit dem darüber oder darunter

@@ -53,11 +53,11 @@ Create a single workflow with all the main steps in sequence. See [Creating Work
 
 1. Open the **Workflow Manager** and open the workflow in the **Editor**
 2. Select a main step from the list
-3. Click **Add Support Step** at the bottom of the editor
+3. Click **+ Support** at the top of the step list
 4. Configure the support sub-step (type, target, action) in the Step Dialog
 5. Click **OK**
 
-The new sub-step appears indented below the main step in the list, numbered `N.M` (e.g., `2.1`, `2.2`).
+The new sub-step appears indented below the main step in the list on a darker band, numbered `→ N.M` (e.g., `→ 2.1`, `→ 2.2`).
 
 Repeat for each main step that needs support activity. Steps with no support sub-steps (e.g., drive-to steps where the support just waits) can be left empty.
 
@@ -82,8 +82,8 @@ The editor shows main steps and their support sub-steps in a single nested list:
 
 - Select any row (main or support sub-step) and click **Edit** to modify it
 - Click **Delete** to remove the selected row (main step or sub-step)
-- **Move Up / Move Down** reorders main steps or reorders support sub-steps within their parent step
-- The **Sup** column on main step rows shows `+N` where N is the number of sub-steps
+- **↑ / ↓** reorders main steps or reorders support sub-steps within their parent step
+- In the [Main Dialog](../ui/main-dialog), the **Support** column shows **Yes** for workflows that have support sub-steps
 
 ## Runtime Behavior
 
@@ -123,9 +123,9 @@ When you save the game, both the **role** (Main or Support) and the current **su
 
 ### Main Vehicle HUD
 
-If one or more support vehicles are active, the HUD shows their combined status:
+If one or more support vehicles are active, a *Supporters:* line counts them by state (e.g. `Supporters: 1 working · 1 waiting`):
 
-![Main vehicle HUD with support badge](/img/screenshots/hud-support-main.png)
+![Main vehicle HUD with support vehicles](/img/screenshots/hud-support-main.png)
 
 ### Support Vehicle HUD
 
@@ -133,7 +133,7 @@ The support vehicle's HUD shows which main step it is following and which sub-st
 
 ![Support vehicle HUD](/img/screenshots/hud-support-vehicle.png)
 
-`Step 2.1/2` means: main is on step 2, support is on sub-step 1 of 2.
+`Step 2 · support 1/2` means: main is on step 2, support is on sub-step 1 of 2. The bottom line names the main vehicle — click the name to switch into it.
 
 ## Multiple Support Vehicles
 

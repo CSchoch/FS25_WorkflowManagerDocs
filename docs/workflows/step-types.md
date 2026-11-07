@@ -48,7 +48,7 @@ AutoDrive handles all navigation and transport operations.
 For cargo operations (Pickup and Deliver, Load), you can select one or more fill types:
 - **Click** an entry to select it (replaces any previous selection)
 - **Ctrl+Click** an entry to toggle it on or off (add or remove from a multi-type selection)
-- Selected entries are shown with a **✓** prefix in green
+- Selected entries are shown with a **»** prefix in green
 - The label below the list shows the selected types: `Selected: Wheat, Barley` (up to 2 names), or `Selected: 3 selected` for larger selections
 - Limits what the vehicle will pick up — useful when multiple fill types are available at one location
 - Leave empty to accept any fill type
@@ -103,6 +103,8 @@ Courseplay handles all field work operations.
 Course names are stored as **folder-qualified paths** rather than bare names, e.g.
 `Singleplayer/F34/Kalken` instead of just `Kalken`. This matters when you have the same course
 name in more than one folder: a step asking for `F34/Kalken` must not load `F09/Kalken`.
+Dialogs and the HUD leave the leading `Singleplayer/` out and show `F34/Kalken`; the step still
+stores the full path.
 
 :::note Courses saved by older versions
 Workflows created before folder-qualified names were introduced stored shorter paths (e.g.

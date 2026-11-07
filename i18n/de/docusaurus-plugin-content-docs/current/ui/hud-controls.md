@@ -20,19 +20,19 @@ Fährst du mit der Maus über eine Taste, erscheint ein Tooltip: **Vorheriger Sc
 
 ### Hauptfahrzeug mit Hilfsfahrzeugen {/* #main-vehicle-with-support-vehicles */}
 
-Folgen ein oder mehrere Hilfsfahrzeuge demselben Workflow, erscheint in der Kopfzeile neben dem Workflow-Namen ein farbiges Abzeichen:
+Laufen ein oder mehrere Hilfsfahrzeuge im selben Workflow, zählt eine zusätzliche Zeile am unteren Rand sie nach Zustand auf:
 
-![HUD des Hauptfahrzeugs mit Hilfsfahrzeug-Abzeichen](/img/screenshots/hud-support-main.png)
+![HUD des Hauptfahrzeugs mit Hilfsfahrzeugen](/img/screenshots/hud-support-main.png)
 
-Das Abzeichen `[NS]` zeigt die Anzahl der aktiven Hilfsfahrzeuge. Seine Farbe steht für ihren gemeinsamen Status: **Grün** (läuft), **Orange** (pausiert), **Grau** (untätig/wartet).
+`Unterstützer: 1 aktiv · 1 wartet` – jeder Zustand hat seine eigene Farbe: **Grün** aktiv, **Orange** pausiert, **Gelb** wartet (auf das Hauptfahrzeug oder auf einen Anführer). Zustände, in denen sich kein Hilfsfahrzeug befindet, werden weggelassen.
 
 ### HUD des Hilfsfahrzeugs
 
-Läuft das Fahrzeug als **Hilfsfahrzeug**, zeigt das HUD, welchem Hauptschritt es folgt und welcher Unterstützungsschritt gerade ausgeführt wird:
+Läuft das Fahrzeug als **Hilfsfahrzeug**, zeigt die Schrittzeile, welchem Hauptschritt es folgt und welcher Unterstützungsschritt gerade läuft:
 
 ![HUD des Hilfsfahrzeugs](/img/screenshots/hud-support-vehicle.png)
 
-`Schritt 2.1/2` bedeutet: Das Hauptfahrzeug ist bei Schritt 2, und das Hilfsfahrzeug führt Unterstützungsschritt 1 von 2 Unterstützungsschritten dieses Hauptschritts aus. Hat das Hilfsfahrzeug alle Unterstützungsschritte erledigt, wartet es, bis das Hauptfahrzeug weiterschaltet.
+`Schritt 2 · Unterstützung 1/2` bedeutet: Das Hauptfahrzeug ist bei Schritt 2, und das Hilfsfahrzeug führt Unterstützungsschritt 1 von 2 Unterstützungsschritten dieses Hauptschritts aus. Hat es alle erledigt, wartet es, bis das Hauptfahrzeug weiterschaltet. Die untere Zeile lautet **Hauptfahrzeug:** gefolgt von dessen Namen – klicke auf den Namen, um in das Hauptfahrzeug zu wechseln.
 
 ## Position des HUD
 
@@ -44,17 +44,29 @@ Du kannst das HUD frei verschieben, indem du es ziehst:
 
 ## Statusanzeige
 
-### Kopfzeile / Workflow-Name
-Die Kopfzeile zeigt nur **WorkflowManager** – welches Fahrzeug du steuerst, ist ja schon klar, weil du darin sitzt. Die Zeile darunter zeigt den Workflow-Namen, einschließlich des Hilfsfahrzeug-Abzeichens, wenn Hilfsfahrzeuge aktiv sind.
+### Kopfzeile
+Die Kopfzeile zeigt **Workflow Manager** und rechts ein **X**. Das X schließt das HUD – genau wie **Alt links + H**. Die Zeile darunter zeigt den Workflow-Namen.
 
-### Schrittzähler
-Zeigt den aktuellen Schritt und die Gesamtzahl der Schritte (z. B. `Schritt 2/5`). Bei Hilfsfahrzeugen zeigt er den Zähler der Unterstützungsschritte (z. B. `Schritt 2.1/2`).
+### Schrittzeile
+Ein farbiger Chip nennt das System, das der Schritt verwendet, gefolgt vom Schrittzähler und dem Ziel:
 
-### Schrittziel
-Zeigt vor dem Ziel oder Kursnamen ein kurzes Typ-Kürzel, z. B. `[AD] Field1_Harvest`, `[CP] Field1_Wheat_Harvest`, `[PARK]`, `[REFUEL]`, `[REPAIR]`. Marker-Schritte (Auf Anführer warten, Folger freigeben) zeigen `[WM]`.
+| Chip | Farbe | Schritte |
+|------|-------|----------|
+| `AD` | Blau | AutoDrive-Schritte |
+| `PARK`, `REFUEL`, `REPAIR` | Blau | Parken, Tanken, Reparieren (von AutoDrive gefahren) |
+| `CP` | Grün | Courseplay-Schritte |
+| `WM` | Bernstein | Auf Anführer warten, Folger freigeben |
+
+Der Text lautet `Schritt 2/5: Field1_Harvest` bei einem Hauptfahrzeug und `Schritt 2 · Unterstützung 1/2: Silo` bei einem Hilfsfahrzeug. Courseplay-Kurse werden ohne den vorangestellten Ordner `Singleplayer/` angezeigt; Schritte ohne Ziel zeigen stattdessen ihren Typnamen.
+
+### Fortschrittsbalken
+Ein dünner Balken unter der Schrittzeile zeigt, wie viel vom Workflow erledigt ist: die abgeschlossenen Schritte plus, solange Courseplay arbeitet, dessen Fortschritt auf dem aktuellen Feld. Er hat die Farbe des Chips des aktuellen Schritts.
+
+### Fahrzeugstatus
+Die Zeile unter dem Balken zeigt, was das Fahrzeug gerade tut: **CP aktiv (42%)**, **AD aktiv**, **Pausiert** oder **Leerlauf**.
 
 ### Wartet auf Anführer / Wartet auf Hauptfahrzeug
-Steht das Fahrzeug bei einem Schritt **Auf Anführer warten** oder ist es ein Hilfsfahrzeug, das seine Unterstützungsschritte erledigt hat, lautet die Statuszeile **Wartet auf Anführer** bzw. **Wartet auf Hauptfahrzeug**, gefolgt vom Namen dieses Fahrzeugs. Der Name ist anklickbar – ein Klick darauf bringt dich direkt in dieses Fahrzeug (genau wie die „Fahrzeug wechseln“-Links von AutoDrive und Courseplay).
+Steht das Fahrzeug bei einem Schritt **Auf Anführer warten** oder ist es ein Hilfsfahrzeug, das seine Unterstützungsschritte erledigt hat, lautet die Statuszeile **Wartet auf Anführer** bzw. **Wartet auf Hauptfahrzeug**, gefolgt vom Namen dieses Fahrzeugs. Der Name ist anklickbar – ein Klick darauf bringt dich direkt in dieses Fahrzeug (genau wie die „Fahrzeug wechseln“-Links von AutoDrive und Courseplay). Fährst du mit der Maus darüber, erscheint *Klicken zum Fahrzeugwechsel*.
 
 ## Steuertasten
 
@@ -156,7 +168,7 @@ Bleibt der Zeiger einmal hängen, setzt ihn Aus- und Wiedereinschalten des HUD m
 
 ### HUD umschalten
 
-Drücke **Alt links + H**, um das HUD-Overlay ein- oder auszublenden.
+Drücke **Alt links + H**, um das HUD-Overlay ein- oder auszublenden, oder klicke auf das **X** in der Kopfzeile, um es zu schließen.
 
 ## Wann das HUD erscheint
 
@@ -172,13 +184,13 @@ Das HUD verschwindet, wenn:
 ## Aktualisierung des HUD
 
 Das HUD aktualisiert sich in Echtzeit:
-- Der Schrittzähler aktualisiert sich bei jedem Schrittwechsel
+- Schrittzeile und Fortschrittsbalken aktualisieren sich bei jedem Schrittwechsel
 - Die Zustände der Tasten aktualisieren sich bei jeder Änderung des Workflow-Status
 - Die Zielinfo aktualisiert sich für jeden Schritt
 
 ## Anpassung
 
-- Blende das HUD mit **Alt links + H** ein oder aus
+- Blende das HUD mit **Alt links + H** ein oder aus, oder schließe es mit dem **X** in der Kopfzeile
 - Verschiebe das HUD an eine beliebige Stelle auf dem Bildschirm, indem du die Kopfzeile ziehst
 
 ## Fehlerbehebung

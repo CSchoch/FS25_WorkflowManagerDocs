@@ -7,10 +7,13 @@ sidebar_position: 3
 # Step Dialog
 
 The Step Dialog configures a single workflow step. It opens from the
-[Editor Dialog](editor-dialog) via **Add Step**, **Add Support Step**, or **Edit** (or by
+[Editor Dialog](editor-dialog) via **New**, **+ Support**, or **Edit** (or by
 double-clicking a step row).
 
 ![Step Dialog – AutoDrive](/img/screenshots/step-dialog-autodrive.png)
+
+The line under the title names the workflow and the step you are editing — for example
+`Harvest · step 3`, `Harvest · support step 3.1`, or `Harvest · new step`.
 
 The dialog is **adaptive**: it only shows the fields the selected type and action actually need.
 Choosing a targetless type collapses it to a single dropdown.
@@ -33,7 +36,7 @@ Changing the type rebuilds the **Action** dropdown and reveals or hides the rest
 See [Step Types](../workflows/step-types) for what each type does at runtime.
 
 :::note Support sub-steps
-When you open the dialog through **Add Support Step**, the two queue markers — *Wait for Leader*
+When you open the dialog through **+ Support**, the two queue markers — *Wait for Leader*
 and *Unlock Follower* — are **removed from the Type dropdown**. Leader/follower pairing is built
 from main steps only.
 
@@ -60,19 +63,20 @@ The available actions depend on the type:
 
 The action drives which of the remaining fields appear:
 
-| Action | Second target | Fill Type | Seed Type |
-|--------|---------------|-----------|-----------|
-| Drive To, Deliver | — | — | — |
-| Unload | Deliver To | — | — |
-| Pickup & Deliver | Deliver To | Yes | — |
-| Load | **Load Point** | Yes | — |
-| Field Work | — | — | Yes |
-| Bale Collect | — | — | — |
+| Action | First target | Second target | Fill Type | Seed Type |
+|--------|--------------|---------------|-----------|-----------|
+| Drive To, Deliver | Target | — | — | — |
+| Unload | Target | Deliver To | — | — |
+| Pickup & Deliver | Target | Deliver To | Yes | — |
+| Load | **Load At** | Deliver To | Yes | — |
+| Field Work | Target | — | — | Yes |
+| Bale Collect | Target | — | — | — |
 
-:::tip
-The second target's label changes with the action — it reads **Load Point** for the *Load* action
-and **Deliver To** for everything else. Same field, different meaning, so read the label rather
-than relying on position.
+:::tip Load shows the route in driving order
+AutoDrive's *Load* mode drives to the load point **first** and then on to the destination. The
+dialog shows the two targets in that order: the first block is **Load At**, the second
+**Deliver To**. Switching the action to or from *Load* moves your two selections along with it,
+so they keep their meaning.
 :::
 
 ## Target
@@ -81,10 +85,13 @@ The **Target** list holds AutoDrive destinations or Courseplay courses, dependin
 
 - Type in the **search box** above the list to filter it as you type
 - Click an entry to select it
-- The current choice is shown in the **Selected** row beneath the list
+- The current choice is shown in the **Selected** row beneath the list. With nothing selected
+  it reads *(none) – pick one from the list* in amber
 
-Courseplay courses appear as folder-qualified paths (e.g. `Singleplayer/F34/Kalken`) so that
-identically-named courses in different folders stay distinguishable — see
+Courseplay courses appear as folder-qualified paths (e.g. `F34/Kalken`) so that
+identically-named courses in different folders stay distinguishable. The leading
+`Singleplayer/` folder that Courseplay puts in front of every course is left out of the display
+(the step still stores the full path) — see
 [Course Selection](../workflows/step-types#course-selection).
 
 ## Fill Type
@@ -97,7 +104,7 @@ matters when several fill types are available at one location.
 | **Click** an entry | Selects it, replacing any previous selection |
 | **Ctrl+Click** an entry | Toggles it on or off, building a multi-type selection |
 
-- Selected entries are marked with a green **✓**
+- Selected entries are shown in green with a **»** in front
 - The label below shows up to two names (`Selected: Wheat, Barley`), or a count for larger
   selections (`Selected: 3 selected`)
 - Leave it empty to accept **any** fill type

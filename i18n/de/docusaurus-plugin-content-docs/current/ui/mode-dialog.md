@@ -19,6 +19,8 @@ das Fahrzeug startet als Hauptfahrzeug.
 
 ## Auswahl
 
+Der Dialog beschreibt beide Rollen oberhalb der Tasten, sodass du dich auch ohne diese Seite entscheiden kannst.
+
 | Taste | Wirkung |
 |--------|--------|
 | **Hauptfahrzeug** | Das Fahrzeug führt die Hauptschritte des Workflows aus – der Drescher, Häcksler oder welches Fahrzeug auch immer die Hauptarbeit erledigt |
@@ -34,9 +36,9 @@ Ein **Hauptfahrzeug** arbeitet die Schritte 1, 2, 3 … der Reihe nach ab. Ein *
 führt stattdessen die Unterstützungsschritte des Hauptschritts aus, bei dem das Hauptfahrzeug gerade ist.
 Sind seine Unterstützungsschritte für diesen Schritt erledigt, wartet es, bis das Hauptfahrzeug weiterrückt.
 
-Das HUD zeigt die Rolle an: Ein Hilfsfahrzeug zeigt einen Zähler für Unterstützungsschritte wie `Schritt 2.1/2` und den
-Status *Wartet auf Hauptfahrzeug*, ein Hauptfahrzeug dagegen ein Abzeichen mit der Zahl seiner aktiven
-Hilfsfahrzeuge. Siehe [HUD-Steuerung](hud-controls#main-vehicle-with-support-vehicles).
+Das HUD zeigt die Rolle an: Ein Hilfsfahrzeug zeigt einen Zähler für Unterstützungsschritte wie `Schritt 2 · Unterstützung 1/2`,
+den Namen des Hauptfahrzeugs und den Status *Wartet auf Hauptfahrzeug*, ein Hauptfahrzeug dagegen eine
+Zeile *Unterstützer:*, die seine Hilfsfahrzeuge nach Status zählt. Siehe [HUD-Steuerung](hud-controls#main-vehicle-with-support-vehicles).
 
 ## Nicht dasselbe wie das Warteschlangen-System
 

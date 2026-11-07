@@ -85,11 +85,11 @@ Mit Unterstützungsschritten arbeitet ein zweites Fahrzeug (z. B. ein Überladew
 ### So fügst du einen Unterstützungsschritt hinzu
 
 1. Wähle im Editor einen **Hauptschritt** (nummeriert `1`, `2`, `3`, …)
-2. Klicke unten im Editor auf **Unterstützungsschritt hinzufügen**
+2. Klicke oben in der Schrittliste auf **+ Unterstützung**
 3. Richte den Unterstützungsschritt im Schritt-Dialog ein (dieselben Felder wie bei einem normalen Schritt)
 4. Klicke auf **OK**
 
-Der Unterstützungsschritt erscheint eingerückt unter dem Hauptschritt, nummeriert `N.M` (z. B. `2.1`, `2.2`).
+Der Unterstützungsschritt erscheint eingerückt unter dem Hauptschritt auf einem dunkleren Streifen, nummeriert `→ N.M` (z. B. `→ 2.1`, `→ 2.2`).
 
 Wiederhole das, um mehrere Unterstützungsschritte hinzuzufügen. Sie laufen der Reihe nach ab, während das Hauptfahrzeug bei diesem Schritt bleibt.
 
@@ -112,7 +112,7 @@ Wie sich das Hilfsfahrzeug zur Laufzeit verhält, steht ausführlich unter [Work
 
 ### Schritte umsortieren
 
-- Wähle einen Schritt und nutze die Tasten **Nach oben** / **Nach unten**
+- Wähle einen Schritt und nutze die Tasten **↑** / **↓**
 - Oder die Tastenkürzel: **U** nach oben, **D** nach unten
 - Unterstützungsschritte werden nur innerhalb ihres Hauptschritts umsortiert
 

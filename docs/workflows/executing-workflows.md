@@ -57,11 +57,12 @@ Workflows have four possible states:
 
 When a workflow is running, an HUD overlay appears showing:
 - Current workflow name
-- Current step (e.g., "Step 2/5")
-- Step details (type, target, action)
+- A coloured chip for the step's system (AD, CP, WM, …), the current step and its target (e.g., `Step 2/5: Field1_Harvest`)
+- A progress bar for the whole workflow
+- What the vehicle is doing right now (CP active, AD active, Paused, Waiting for leader, …)
 - Control buttons
 
-For support vehicles the step counter shows the sub-step position, e.g. `Step 2.1/2` (main is on step 2, support is executing sub-step 1 of 2).
+For support vehicles the step line shows the sub-step position, e.g. `Step 2 · support 1/2` (main is on step 2, support is executing sub-step 1 of 2). See [HUD Controls](../ui/hud-controls) for every line.
 
 ![HUD while workflow is running](/img/screenshots/hud-running.png)
 

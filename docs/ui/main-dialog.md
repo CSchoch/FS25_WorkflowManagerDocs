@@ -22,7 +22,8 @@ The main area displays all saved workflows with:
 
 | Column | Description |
 |--------|-------------|
-| Name | Workflow name — colored **green** (running), **orange** (paused), or **white** (idle) on the current vehicle |
+| Workflow Name | Workflow name — colored **green** (running), **orange** (paused), or **white** (idle) on the current vehicle |
+| Support | **Yes** when the workflow has support sub-steps — starting it then asks for the role (see [Mode Select](mode-dialog)) |
 | Steps | Total step count, or `current/total` progress (e.g., `2/6`) while the workflow is active on the current vehicle |
 
 ### Selection

@@ -9,6 +9,8 @@ sidebar_position: 6
 In diesem Dialog legst du fest, welches bereits laufende Fahrzeug das startende Fahrzeug als seinen
 **Anführer** für das [Warteschlangen-System](../workflows/queue-system) behandeln soll.
 
+![Dialog „Anführerfahrzeug wählen“](/img/screenshots/leader-select-dialog.png)
+
 ## Wann er erscheint
 
 Der Dialog erscheint beim **Starten**, sobald mindestens ein *anderes* Fahrzeug bereits einen
@@ -23,10 +25,12 @@ Jede Zeile zeigt ein laufendes Fahrzeug:
 
 | Spalte | Beschreibung |
 |--------|-------------|
-| Fahrzeugname | Der Name des Fahrzeugs im Spiel |
+| Fahrzeug | Der Name des Fahrzeugs im Spiel |
 | Workflow-Name | Der Workflow, den dieses Fahrzeug gerade ausführt |
+| Aktueller Schritt | Wo dieses Fahrzeug gerade steht, z. B. `2/10 · Feldarbeit` (Schritt 2 von 10, dann die Aktion oder der Schritttyp) |
 
-Beim Öffnen des Dialogs ist der erste Eintrag ausgewählt. Ein Doppelklick auf eine Zeile wählt
+Die Liste ist nach Fahrzeugname sortiert, danach nach Workflow-Name, sodass sie bei jedem Öffnen
+dieselbe Reihenfolge hat. Beim Öffnen des Dialogs ist der erste Eintrag ausgewählt. Ein Doppelklick auf eine Zeile wählt
 dieses Fahrzeug aus und bestätigt in einem Schritt.
 
 ## Schaltflächen

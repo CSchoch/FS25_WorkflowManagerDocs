@@ -57,11 +57,12 @@ Ein Workflow kann vier Zustände haben:
 
 Läuft ein Workflow, erscheint ein HUD-Overlay mit:
 - Name des aktuellen Workflows
-- Aktuellem Schritt (z. B. „Schritt 2/5“)
-- Details zum Schritt (Typ, Ziel, Aktion)
+- Einem farbigen Chip für das System des Schritts (AD, CP, WM, …), dem aktuellen Schritt und seinem Ziel (z. B. `Schritt 2/5: Field1_Harvest`)
+- Einem Fortschrittsbalken für den ganzen Workflow
+- Was das Fahrzeug gerade tut (CP aktiv, AD aktiv, Pausiert, Wartet auf Anführer, …)
 - Steuertasten
 
-Bei Hilfsfahrzeugen zeigt der Schrittzähler die Position des Unterstützungsschritts, z. B. `Schritt 2.1/2` (das Hauptfahrzeug ist bei Schritt 2, das Hilfsfahrzeug führt Unterstützungsschritt 1 von 2 aus).
+Bei Hilfsfahrzeugen zeigt die Schrittzeile die Position des Unterstützungsschritts, z. B. `Schritt 2 · Unterstützung 1/2` (das Hauptfahrzeug ist bei Schritt 2, das Hilfsfahrzeug führt Unterstützungsschritt 1 von 2 aus). Alle Zeilen findest du unter [HUD-Steuerung](../ui/hud-controls).
 
 ![HUD während ein Workflow läuft](/img/screenshots/hud-running.png)
 

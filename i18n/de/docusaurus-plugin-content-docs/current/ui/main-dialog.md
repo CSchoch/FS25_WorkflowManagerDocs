@@ -22,7 +22,8 @@ Der Hauptbereich zeigt alle gespeicherten Workflows mit:
 
 | Spalte | Beschreibung |
 |--------|-------------|
-| Name | Name des Workflows – auf dem aktuellen Fahrzeug **grün** (läuft), **orange** (pausiert) oder **weiß** (inaktiv) eingefärbt |
+| Workflow-Name | Name des Workflows – auf dem aktuellen Fahrzeug **grün** (läuft), **orange** (pausiert) oder **weiß** (inaktiv) eingefärbt |
+| Unterstützung | **Ja**, wenn der Workflow Unterstützungsschritte enthält – beim Starten wird dann nach der Rolle gefragt (siehe [Rollen-Dialog](mode-dialog)) |
 | Schritte | Gesamtzahl der Schritte oder, solange der Workflow auf dem aktuellen Fahrzeug aktiv ist, der Fortschritt als `aktuell/gesamt` (z. B. `2/6`) |
 
 ### Auswahl

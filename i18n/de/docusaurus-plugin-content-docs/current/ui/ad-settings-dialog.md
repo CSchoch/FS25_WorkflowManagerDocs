@@ -26,7 +26,7 @@ Prozentwerte gibst du als ganze Zahlen ein (`80`, nicht `0.8`); intern werden si
 **Offset Rohr** gibst du in Metern ein, auch Kommawerte sind möglich.
 
 :::tip
-Lass ein Feld **leer**, wenn die Einstellung unverändert bleiben soll – der Workflow verwendet dann
+Der Dialog weist unter den Feldern selbst darauf hin: Lass ein Feld **leer**, wenn die Einstellung unverändert bleiben soll – der Workflow verwendet dann
 den Wert, der in AutoDrive für dieses Fahrzeug bereits eingestellt ist. Ein leeres Feld ist nicht dasselbe wie null.
 :::
 
